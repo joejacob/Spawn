@@ -1,7 +1,8 @@
 Router.configure({
 	layoutTemplate: 'layout',
 	loadingTemplate: 'loading',
-	notFoundTemplate: 'notFound'
+	notFoundTemplate: 'notFound',
+	// waitOn: function() { return Meteor.subscribe('tasks'); }
 });
 
 Router.route('/', {name: 'eventsPage'});
@@ -11,7 +12,7 @@ Router.route('/add', {
 	// data: function() { return {sessionid: this.params._sessionid}; }
 });
 
-Router.route('/event', {
+Router.route('/event/:_id', {
 	name: 'viewEvent',
-	// data: function() { return {sessionid: this.params._sessionid}; }
+	data: function() { return Tasks.findOne(this.params._id); }
 });

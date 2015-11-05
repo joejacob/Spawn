@@ -1,5 +1,5 @@
 Template.addEvent.events({
-    "submit form": function (event) {
+  "submit form": function (event) {
     // This function is called when the new task form is submitted
     var eventName = event.target.eventName.value;
     var eventDescription = event.target.eventDescription.value;
@@ -15,11 +15,12 @@ Template.addEvent.events({
       host: Meteor.user().username || Meteor.user().profile.name
     });
 
-    // Clear form
-    event.target.eventName.value = "";
-    event.target.eventDescription.value = "";
+    // // Clear form
+    // event.target.eventName.value = "";
+    // event.target.eventDescription.value = "";
+    Router.go('eventsPage');
 
     // Prevent default form submit
     return false;
   }
-  });
+});
