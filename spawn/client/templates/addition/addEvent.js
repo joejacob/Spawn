@@ -23,9 +23,3 @@ Template.addEvent.events({
     return false;
   }
   });
-
-    Template.addEvent.helpers({
-      tasks: function () {
-        return Tasks.find({}, {sort: {createdAt: -1}});
-    }
-  });
