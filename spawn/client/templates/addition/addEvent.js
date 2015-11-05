@@ -12,7 +12,7 @@ Template.addEvent.events({
       description: eventDescription,
       time: eventTime,
       createdAt: new Date(),
-      host: currentUser.services.facebook.name
+      host: Meteor.user().username || Meteor.user().profile.name
     });
 
     // Clear form

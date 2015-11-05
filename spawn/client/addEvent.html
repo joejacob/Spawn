@@ -1,0 +1,27 @@
+<template name="addEvent">
+  <div id="main">
+    <h1>+ Spawn</h1>
+    <form>
+      Name:
+      <input type="text" name="eventName" placeholder="Type to add new tasks" />
+      <br>
+      <input type="radio" name="eventVisibility" value="public" checked> public
+      <br>
+      <input type="radio" name="eventVisibility" value="private"> private
+      <br>
+      Description:
+      <input type="text" name="eventDescription" placeholder="Type to add new tasks" />
+      <br>
+      Time:
+      <input type="time" name="eventTime">
+      <br>
+      <input type="submit">
+    </form>
+
+    <ul>
+      {{#each tasks}}
+        {{> event}}
+      {{/each}}
+    </ul>
+  </div>
+</template>
