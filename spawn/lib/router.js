@@ -6,7 +6,7 @@ Router.configure({
 
 Router.route('/', {name: 'eventsPage'});
 
-// Router.route('/add', {
-// 	name: 'addEvent',
-// 	// data: function() { return {sessionid: this.params._sessionid}; }
-// });
+Router.route('/add', {
+	name: 'addEvent',
+	// data: function() { return {sessionid: this.params._sessionid}; }
+});
