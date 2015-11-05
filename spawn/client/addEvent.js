@@ -11,7 +11,8 @@ Template.addEvent.events({
       visibility: eventVisibility,
       description: eventDescription,
       time: eventTime,
-      createdAt: new Date()
+      createdAt: new Date(),
+      host: currentUser.services.facebook.name
     });
 
     // Clear form
