@@ -16,3 +16,8 @@ Router.route('/event/:_id', {
 	name: 'viewEvent',
 	data: function() { return Tasks.findOne(this.params._id); }
 });
+
+// Router.route('/prof', {
+// 	name: 'profilePage',
+// 	// data: function() { return {sessionid: this.params._sessionid}; }
+// });
