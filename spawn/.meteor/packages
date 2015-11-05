@@ -11,3 +11,4 @@ twbs:bootstrap
 underscore
 accounts-facebook
 service-configuration
+iron:router
