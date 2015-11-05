@@ -36,7 +36,6 @@
         </div>
         <div class="list-group">
             {{#each tasks}}
-                {{#if eventItem.host === Meteor.user().username || eventItem.host === Meteor.user().profile.name}}
                     {{> eventItem}}
             {{/each}}
 	   </div>
