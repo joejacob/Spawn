@@ -56,6 +56,13 @@
           </div>
         </div>
       </div>
+      <div class = "row well">
+        <h2>Comments</h2>
+          {{#each comments}}
+            {{> commentItem}}
+          {{/each}}
+          {{> postComment}}
+      </div>
     </div>
   </body>
 </template>
