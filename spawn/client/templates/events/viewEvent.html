@@ -16,16 +16,16 @@
           </ul>
           <div class="well"><span style="font-size:200%">5/10 spawned in</span></div>
           <div id="fbPhotoCircles" class="well">
-            <img src="http://www.ridecairns.com/wp-content/themes/kairos-wp/images/social/facebook.png">
-            <img src="http://www.ridecairns.com/wp-content/themes/kairos-wp/images/social/facebook.png">
-            <img src="http://www.ridecairns.com/wp-content/themes/kairos-wp/images/social/facebook.png">
-            <img src="http://www.ridecairns.com/wp-content/themes/kairos-wp/images/social/facebook.png">
-            <img src="http://www.ridecairns.com/wp-content/themes/kairos-wp/images/social/facebook.png">
+            {{#each attendees}}
+              <li>{{this}}</li>
+              <img src="http://hasslefreeliving.com/wp-content/uploads/2012/10/placeholder.gif">    
+            {{/each}}       
           </div>
         </div>
       </div>
       <div class = "row">
         <div class="col-lg-3"></div>
+        <button type="button" id="joinEvent">Join Event!</button>
         <div class="col-lg-6 panel panel-default">
           <span> Description: {{description}} </span>
         </div>

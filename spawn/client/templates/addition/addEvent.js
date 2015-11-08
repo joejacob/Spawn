@@ -5,6 +5,7 @@ Template.addEvent.events({
     var eventDescription = event.target.eventDescription.value;
     var eventVisibility = event.target.eventVisibility.value;
     var eventTime = event.target.eventTime.value;
+    var eventAttendees = [];
     
     Tasks.insert({
       name: eventName,
@@ -12,7 +13,8 @@ Template.addEvent.events({
       description: eventDescription,
       time: eventTime,
       createdAt: new Date(),
-      host: Meteor.user().username || Meteor.user().profile.name
+      host: Meteor.user().username || Meteor.user().profile.name,
+      attendees: eventAttendees
     });
 
     // // Clear form
