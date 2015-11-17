@@ -1,17 +1,26 @@
 <template name="profilePage">
-  <body>
-    <div class = "container-fluid">
-      <div class = "row">
-        <h1>User: {{currentUser.profile.name}}</h1>
-        <a href="href" class="thumbnail">
-          <img id="eventPicture" src={{currentUser.profile.picture}}>
-        </a>
-      </div>
-    <div class="list-group">
-            {{#each tasks}}
+    <body>
+        <div class = "container-fluid">
+            
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2">
+                    <a href="#" class="thumbnail">
+                        <img id="eventPicture" style="display:inline" src={{currentUser.profile.picture}}>
+                    </a>
+                </div>
+                <div class="col-sm-7">
+                    <h1 id="profilePageName">{{currentUser.profile.name}}</h1>
+                </div>
+            </div>
+
+
+            <h3>Events Created</h3>
+            <div class="list-group">
+                {{#each tasks}}
                     {{> eventItem}}
-            {{/each}}
-	   </div>
-    </div>
-  </body>
+                {{/each}}
+            </div>
+        </div>
+    </body>
 </template> 
