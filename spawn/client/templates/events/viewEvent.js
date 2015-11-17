@@ -2,7 +2,7 @@ Template.viewEvent.events({
 	"click #joinEvent": function () {
 		var me = Meteor.user().username || Meteor.user().profile.name;
 		Tasks.update(this._id, {
-        	$push: {attendees: me}
+        	$push: {attendees: {name: me, pic: Meteor.user().profile.picture}}
       	});
 	}
 });

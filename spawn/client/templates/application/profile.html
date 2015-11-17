@@ -2,38 +2,10 @@
   <body>
     <div class = "container-fluid">
       <div class = "row">
-        <div class="col-lg-6">
-            <style type="text/css">
-                #wrap {
-                   width:600px;
-                   margin:0 auto;
-                }
-                #left_col {
-                   float:left;
-                   width:400px;
-                }
-                #right_col {
-                   float:right;
-                   width:200px;
-                }
-                </style>
-
-                <div id="wrap">
-                    <div id="left_col">
-                        <div align="left">
-                          <a href="href" class="thumbnail">
-                            <img id="eventPicture" src="http://hasslefreeliving.com/wp-content/uploads/2012/10/placeholder.gif">
-                          </a>
-                        </div>
-                    </div>
-                    <div id="right_col">
-                        <ul class="list-group">
-                            <li class="list-group-item">User: {{currentUser.profile.name}}</li>
-                            <li class="list-group-item">Primary location: FILLER LOC</li>
-                        </ul>
-                    </div>
-                </div>
-        </div>
+        <h1>User: {{currentUser.profile.name}}</h1>
+        <a href="href" class="thumbnail">
+          <img id="eventPicture" src={{currentUser.profile.picture}}>
+        </a>
       </div>
     <div class="list-group">
             {{#each tasks}}

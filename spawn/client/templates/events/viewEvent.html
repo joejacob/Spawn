@@ -13,51 +13,28 @@
             <li class="list-group-item">Host: {{host}}</li>
             <li class="list-group-item">Time: {{time}}</li>
             <li class="list-group-item">Location</li>
+            <li class="list-group-item">Description: {{description}}</li>
           </ul>
-          <div class="well"><span style="font-size:200%">5/10 spawned in</span></div>
-          <div id="fbPhotoCircles" class="well">
-            {{#each attendees}}
-              <li>{{this}}</li>
-              <img src="http://hasslefreeliving.com/wp-content/uploads/2012/10/placeholder.gif">    
-            {{/each}}       
+          <div class="well">
+            <span>Participants: {{attendees.length}}</span>
+            <span><button type="button" id="joinEvent" class="btn btn-default">Join Event!</button></span>
+            <span><button type="button" id="leaveEvent" class="btn btn-default">Leave Event</button></span>
           </div>
         </div>
       </div>
-      <div class = "row">
-        <div class="col-lg-3"></div>
-        <button type="button" id="joinEvent">Join Event!</button>
-        <div class="col-lg-6 panel panel-default">
-          <span> Description: {{description}} </span>
-        </div>
-        <div class="col-lg-3"></div>
+      <h2>Participants</h2>
+      <div id="fbPhotoCircles" class="row well">
+        {{#each attendees}}
+          <div class="col-sm-3">
+            <p>{{this.name}}</p>
+            <img src={{this.pic}}>  
+          </div>  
+        {{/each}}    
+
       </div>
-      <div class = "row">
-        <div class="col-lg-6 panel panel-default">
-          <span> COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS COMMENTS </span>
-        </div>
-        <div class="col-lg-6 panel panel-default">
-          <div class="row">
-            <div class="col-lg-6">
-              <a href="#" class="thumbnail">
-                <img src="http://www.ridecairns.com/wp-content/themes/kairos-wp/images/social/facebook.png" alt="...">
-              </a>
-              <a href="#" class="thumbnail">
-                <img src="http://www.ridecairns.com/wp-content/themes/kairos-wp/images/social/facebook.png" alt="...">
-              </a>
-            </div>
-            <div class="col-lg-6">
-              <a href="#" class="thumbnail">
-                <img src="http://www.ridecairns.com/wp-content/themes/kairos-wp/images/social/facebook.png" alt="...">
-              </a>
-              <a href="#" class="thumbnail">
-                <img src="http://www.ridecairns.com/wp-content/themes/kairos-wp/images/social/facebook.png" alt="...">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+
+      <h2>Comments</h2>
       <div class = "row well">
-        <h2>Comments</h2>
           {{#each comments}}
             {{> commentItem}}
           {{/each}}
