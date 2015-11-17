@@ -18,5 +18,10 @@ Router.route('/event/:_id', {
 });
 
 Router.route('/prof', {
-	name: 'profilePage'
+	name: '1profilePage'
+});
+
+Router.route('/prof/:_id', {
+	name: 'profilePage',
+	data: function() { return AllUsers.findOne(this.params._id); }
 });

@@ -2,7 +2,7 @@ Template.viewEvent.events({
 	"click #joinEvent": function () {
 		var me = Meteor.user().username || Meteor.user().profile.name;
 		// console.log(Meteor.user().services.facebook)
-		// console.log(Meteor.user());
+		console.log(Meteor.user());
 		Tasks.update(this._id, {
         	$push: {attendees: {name: me, pic: Meteor.user().profile.picture, uid: Meteor.user()._id}}
       	});

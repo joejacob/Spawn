@@ -1,6 +1,6 @@
 <template name="login">
     {{#if currentUser}}
-    	<a href="/prof">
+    	<a href="/prof/{{currentUser._id}}">
     		<span id="ownProfGlyph" class="glyphicon glyphicon-user" aria-hidden="true"></span>
         	<span>{{currentUser.services.facebook.name}}</span>
         	<!-- {{currentUser.services.facebook.gender}} -->
