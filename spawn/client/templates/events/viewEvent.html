@@ -30,12 +30,12 @@
       <h2>Participants</h2>
       <div id="fbPhotoCircles" class="row well">
         {{#each attendees}}
-          <div class="col-sm-2">
+          <a href="#" id="joinedImgBox" class="thumbnail col-sm-2">
             <p id="joinedName">{{this.name}}</p>
-            <div id="joinedImg" class="thumbnail img-responsive">
-              <img src={{this.pic}}>
+            <div class="img-responsive">
+              <img id="joinedImg" class="img-rounded" src={{this.pic}}>
             </div>
-          </div>  
+          </a>  
         {{/each}}    
       </div>
 
