@@ -17,10 +17,6 @@ Router.route('/event/:_id', {
 	data: function() { return Tasks.findOne(this.params._id); }
 });
 
-Router.route('/prof', {
-	name: '1profilePage'
-});
-
 Router.route('/prof/:_id', {
 	name: 'profilePage',
 	data: function() { return AllUsers.findOne(this.params._id); }
