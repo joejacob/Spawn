@@ -2,7 +2,8 @@
   <body>
     <div class="container-fluid">
 
-    <h1 id="eventTitle">{{name}} <span><button type="button" id="deleteEvent" class="btn btn-default">Delete Event</button></span></h1>
+    <h1 id="eventTitle">{{name}} 
+        {{#if isHost}}<span><button type="button" id="deleteEvent" class="btn btn-default">Delete Event</button></span>{{/if}}</h1>
 
       <div class="row">
         <div class="col-lg-6">
@@ -19,8 +20,11 @@
           </ul>
           <div class="well">
             <span>Participants: {{attendees.length}}</span>
-            <span><button type="button" id="joinEvent" class="btn btn-default">Join Event!</button></span>
-            <span><button type="button" id="leaveEvent" class="btn btn-default">Leave Event</button></span>
+             {{#if isParticipating}}
+                <span><button type="button" id="leaveEvent" class="btn btn-default">Leave Event</button></span>
+             {{else}}
+                <span><button type="button" id="joinEvent" class="btn btn-default">Join Event!</button></span>
+             {{/if}}
           </div>
         </div>
       </div>
