@@ -1,7 +1,7 @@
 // should prevent duplicate users
 Template.viewEvent.events({
 	"click #joinEvent": function () {
-		var me = Meteor.user().username || Meteor.user().profile.name;
+		var me = Meteor.user().profile.name;
 		// console.log(Meteor.user().services.facebook)
 		console.log(Meteor.user());
         
@@ -13,28 +13,35 @@ Template.viewEvent.events({
                                     {"_id": this._id}, 
                                     {"attendees.uid": Meteor.user()._id}
                                 ]}));*/
-        
+        // only if user isnt already in the event
+        if(Tasks.find({$and: [
+                            {"_id": this._id}, 
+                            {"attendees.uid": Meteor.user()._id}]}).count() == 0) {
             Tasks.update(this._id, {
                 $push: {attendees: {name: me, 
                                     pic: Meteor.user().profile.picture, 
                                     uid: Meteor.user()._id}}
-            });       
+            }); 
+        }
 	},
     
-    /*"click #leaveEvent": function () {
-		var me = Meteor.user().username || Meteor.user().profile.name;
-		console.log(Meteor.user());
-		Tasks.remove(this._id, 
-                    $pull: {"attendees": {"uid": Meteor.user()._id}});
+    "click #leaveEvent": function () {
+		console.log("left event");
+		Tasks.update({"_id" : this._id}, 
+                     {$pull: {"attendees": {"uid": Meteor.user()._id}}},
+                     {multi : true});
 	},
     
+    // have to implement redirect user after event deleted
+    // create a function so i can optionally show "delete event"
     "click #deleteEvent": function() {
+        console.log("deleted event");
         if (Tasks.find({$and: [
                             {"_id": this._id}, 
-                            {"host" : {"uid": Meteor.user()._id}}]})) {
+                            {"hostUid": Meteor.user()._id}]}).count() == 1) {
             Tasks.remove({"_id":this._id});
         }
-    }*/
+    }
 });
 
 
