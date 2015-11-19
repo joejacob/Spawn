@@ -13,7 +13,8 @@ Template.addEvent.events({
       description: eventDescription,
       time: eventTime,
       createdAt: new Date(),
-      host: Meteor.user().username || Meteor.user().profile.name,
+      host: Meteor.user().username || Meteor.user().profile.name, 
+      hostUid: Meteor.user()._id,
       attendees: eventAttendees
     });
       

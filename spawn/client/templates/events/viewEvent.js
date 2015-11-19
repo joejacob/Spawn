@@ -4,8 +4,9 @@ Template.viewEvent.events({
 		var me = Meteor.user().username || Meteor.user().profile.name;
 		// console.log(Meteor.user().services.facebook)
 		console.log(Meteor.user());
+        
         // unsuccesfully querying the the db lol
-       /* var i = new Meteor.Collection.ObjectID(this.id)
+        /* var i = new Meteor.Collection.ObjectID(this.id)
         console.log(i);
         console.log(Tasks.find({"_id" : this._id}));
         console.log(Tasks.find( {$and: [
@@ -14,21 +15,30 @@ Template.viewEvent.events({
                                 ]}));*/
         
             Tasks.update(this._id, {
-                $push: {attendees: {name: me, pic: Meteor.user().profile.picture, uid: Meteor.user()._id}}
-            });
-        
-	}
+                $push: {attendees: {name: me, 
+                                    pic: Meteor.user().profile.picture, 
+                                    uid: Meteor.user()._id}}
+            });       
+	},
+    
+    /*"click #leaveEvent": function () {
+		var me = Meteor.user().username || Meteor.user().profile.name;
+		console.log(Meteor.user());
+		Tasks.remove(this._id, 
+                    $pull: {"attendees": {"uid": Meteor.user()._id}});
+	},
+    
+    "click #deleteEvent": function() {
+        if (Tasks.find({$and: [
+                            {"_id": this._id}, 
+                            {"host" : {"uid": Meteor.user()._id}}]})) {
+            Tasks.remove({"_id":this._id});
+        }
+    }*/
 });
 
 
-// small problem of when you're the only person in the event, all info about the event gets deleted!!!! hahahahahahahaha
-/*Template.viewEvent.events({
-	"click #leaveEvent": function () {
-		var me = Meteor.user().username || Meteor.user().profile.name;
-		console.log(Meteor.user());
-		Tasks.remove(this._id, {"uid": Meteor.user()._id});
-	}
-});*/
+
 
 Template.viewEvent.helpers({
 	// tasks: function () {
@@ -37,7 +47,7 @@ Template.viewEvent.helpers({
 
 
 	comments: function () {
-		return EventComments.find({ event_id: this._id }, {sort: {createdAt: -1}});
+		return EventComments.find({event_id: this._id }, {sort: {createdAt: -1}});
 	}
 
 

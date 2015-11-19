@@ -2,7 +2,7 @@
   <body>
     <div class="container-fluid">
 
-    <h1 id="eventTitle">Event: {{name}}</h1>
+    <h1 id="eventTitle">{{name}} <span><button type="button" id="deleteEvent" class="btn btn-default">Delete Event</button></span></h1>
 
       <div class="row">
         <div class="col-lg-6">
@@ -12,7 +12,7 @@
         </div>
         <div class="col-lg-6">
           <ul class="list-group">
-            <li class="list-group-item"><b>Host:</b> {{host}}</li>
+            <li class="list-group-item"><b>Host:</b> {{hostUid}}</li>
             <li class="list-group-item"><b>Time:</b> {{time}}</li>
             <li class="list-group-item"><b>Location:</b> some coordinates</li>
             <li class="list-group-item"><b>Description:</b> {{description}}</li>
@@ -24,7 +24,6 @@
           </div>
         </div>
       </div>
-
 
 
       <h2>Participants</h2>
