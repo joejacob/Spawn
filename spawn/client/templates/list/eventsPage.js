@@ -1,3 +1,8 @@
+/*
+TODO:
+    - add search bar to search for events by name, host
+*/
+
 Template.eventsPage.helpers({
 	tasks: function () {
         var d = new Date();
