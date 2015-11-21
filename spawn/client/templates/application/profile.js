@@ -1,12 +1,17 @@
+/*
+    - different sections for events participated in and events created
+    - pull more data from facebook
+        - spawn friends
+        - location
+        - age
+*/
 Template.profilePage.helpers({
 	tasks: function () {
- 		return Tasks.find({host: this.profile.name}, {sort: {createdAt: -1}});
+        if(this.profile) {
+            console.log(this.profile)
+ 		    return Tasks.find({host: this.profile.name}, {sort: {createdAt: -1}});
+        }
 	}
 });
 
-// Template.profilePage.helpers({
-// 	tasks: function () {
-//  		return Tasks.find({}, {sort: {createdAt: -1}});
-// 	}
-// });
 

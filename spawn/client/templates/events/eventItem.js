@@ -1,3 +1,8 @@
+/*
+TODO:
+    - timer until event starts
+    - changes color
+*/
 Template.eventItem.helpers({
 
 	eventSize: function () {
