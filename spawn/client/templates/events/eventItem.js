@@ -36,4 +36,14 @@ Template.eventItem.helpers({
             return t;
         }
     }
+    
+    /*getColor: function() {
+        if(this.countdown) {
+            var R = 255 - (this.countdown.get()/86400)*255;
+            var G = (this.countdown.get()/86400)*255;
+            this.color = "rgb(" + R + "," + G + ",0)"
+            console.log(this.color);
+        }
+        return this.color;
+    }*/
 });
