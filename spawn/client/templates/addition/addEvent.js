@@ -22,7 +22,8 @@ Template.addEvent.events({
     var timeArr = eventTime.split(":");
     var eventTimeInt = parseInt(timeArr[0])*3600 + parseInt(timeArr[1])*60;  
     var timeU = (currTime < eventTimeInt) ? (eventTimeInt - currTime) : (86400 - (currTime - eventTimeInt));
-    
+    var timeUD = 10;
+      
     // convert 24-hour time to 12-hour time
     var suffix = (timeArr[0] >= 12)? 'pm' : 'am';
     var eHours = (timeArr[0] > 12)? timeArr[0] -12 : timeArr[0];
@@ -35,6 +36,7 @@ Template.addEvent.events({
       description: eventDescription,
       time: eventTime,
       timeUntil: timeU,
+      timeUntilDisappear: timeUD,
       createdAt: new Date(),
       host: Meteor.user().profile.name, 
       hostUid: Meteor.user()._id,
