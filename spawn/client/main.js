@@ -1,4 +1,8 @@
-if (Meteor.isClient) {    
+if (Meteor.isClient) {
+    Meteor.startup(function() {
+        GoogleMaps.load();
+    });
+
     Template.login.events({
         'click #facebook-login': function(event) {
             Meteor.loginWithFacebook({}, function(err){
