@@ -5,6 +5,7 @@ TODO
 - change color for each event as time goes down
 - have event deleted from database 2 hours after event
 */
+
 Template.addEvent.events({
   "submit form": function (event) {
     // This function is called when the new task form is submitted
@@ -15,6 +16,7 @@ Template.addEvent.events({
     var eventAttendees = [{name: Meteor.user().profile.name, 
                            pic: Meteor.user().profile.picture, 
                            uid: Meteor.user()._id}];
+    var eventLocation = Session.get('selectedLocation');
     
     // getting timeUntil
     var currDate = new Date();
@@ -40,7 +42,8 @@ Template.addEvent.events({
       createdAt: new Date(),
       host: Meteor.user().profile.name, 
       hostUid: Meteor.user()._id,
-      attendees: eventAttendees
+      attendees: eventAttendees,
+      locationLatLng: eventLocation
     });
     console.log(event)
     // // Clear form
