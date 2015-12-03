@@ -19,6 +19,7 @@ Template.displayEventMap.onCreated(function() {
           locationMarker = new google.maps.Marker({
             position: new google.maps.LatLng(latLng.lat, latLng.lng),
             map: map.instance,
+            icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png',
             title: 'Current Location'
           });
         }
@@ -52,7 +53,7 @@ Template.displayEventMap.helpers({
   mapOptions: function() {
     var latLng = Geolocation.latLng();
     actualEventLocation = this.locationLatLng;
-    
+
       // Initialize the map once we have the latLng.
       if (GoogleMaps.loaded() && latLng) {
         return {
