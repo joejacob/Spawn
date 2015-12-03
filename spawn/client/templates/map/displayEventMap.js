@@ -1,11 +1,12 @@
 var MAP_ZOOM = 18;
+var actualEventLocation;
 
 Template.displayEventMap.onCreated(function() {
 
-    var self = this;
+  var self = this;
 
-    GoogleMaps.ready('map', function(map) {
-      var locationMarker;
+  GoogleMaps.ready('map', function(map) {
+    var locationMarker;
 
       // Create and move the marker when latLng changes.
       self.autorun(function() {
@@ -32,24 +33,26 @@ Template.displayEventMap.onCreated(function() {
       });
 
       var eventMarker = new google.maps.Marker({
-        position: map.options.center, //update to be event location
+        position: new google.maps.LatLng(actualEventLocation.lat, actualEventLocation.lng),
         map: map.instance,
         animation: google.maps.Animation.DROP,
         title: 'Event Location'
-      });
-
+      }); 
     });
+
 });
 
 Template.displayEventMap.helpers({
 
-    geolocationError: function() {
-      var error = Geolocation.error();
-      return error && error.message;
-    },
+  geolocationError: function() {
+    var error = Geolocation.error();
+    return error && error.message;
+  },
 
-    mapOptions: function() {
-      var latLng = Geolocation.latLng();
+  mapOptions: function() {
+    var latLng = Geolocation.latLng();
+    actualEventLocation = this.locationLatLng;
+    
       // Initialize the map once we have the latLng.
       if (GoogleMaps.loaded() && latLng) {
         return {
@@ -58,4 +61,4 @@ Template.displayEventMap.helpers({
         };
       }
     }
-});
+  });

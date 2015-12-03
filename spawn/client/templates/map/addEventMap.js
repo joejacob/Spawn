@@ -1,4 +1,5 @@
 var MAP_ZOOM = 18;
+var eventLocation;
 
 Template.addEventMap.onCreated(function() {
 
@@ -9,6 +10,11 @@ Template.addEventMap.onCreated(function() {
         map: map.instance,
         draggable: true,
         title: 'Event Location'
+      });
+
+      google.maps.event.addListener(eventMarker, 'dragend', function(event) {
+        eventLocation = { lat: event.latLng.lat(), lng: event.latLng.lng() };
+        Session.set('selectedLocation', eventLocation);
       });
 
     });
@@ -25,6 +31,8 @@ Template.addEventMap.helpers({
       var latLng = Geolocation.latLng();
       // Initialize the map once we have the latLng.
       if (GoogleMaps.loaded() && latLng) {
+        eventLocation = { $set: { lat: latLng.lat, lng: latLng.lng }};
+        Session.set('selectedLocation', eventLocation);
         return {
           center: new google.maps.LatLng(latLng.lat, latLng.lng),
           zoom: MAP_ZOOM
