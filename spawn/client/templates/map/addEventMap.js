@@ -1,4 +1,4 @@
-var MAP_ZOOM = 18;
+var MAP_ZOOM = 17;
 var eventLocation;
 
 Template.addEventMap.onCreated(function() {
