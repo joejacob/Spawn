@@ -1,6 +1,6 @@
 /*
 TODO:
-    - timer until event starts
+    - create an autodelete timer
     - changes color
 */
 

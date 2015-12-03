@@ -69,9 +69,6 @@ Template.viewEvent.helpers({
     
     isHost: function() {
         if(Tasks.findOne({_id: this._id})) {
-            console.log(Tasks.find({$and: [
-                                {_id: this._id}, 
-                                {hostUid : Meteor.user()._id}]}).count())
             return Tasks.findOne({_id: this._id}).hostUid == Meteor.user()._id;
         }
     },

@@ -1,8 +1,10 @@
 <template name="eventsPage">
 	<h1>Choose an event!</h1>
-	<div class="list-group">
-		{{#each tasks}}
-			{{> eventItem}}
-		{{/each}}
-	</div>
+    {{> searchBar}}
+    {{> searchResult}}
+    <div class="list-group">
+        {{#each tasks}}
+            {{> eventItem}}
+        {{/each}}
+    </div>
 </template>
