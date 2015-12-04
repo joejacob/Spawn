@@ -1,4 +1,4 @@
-var options = {
+/*var options = {
     keepHistory: 1000*60*5,
     localSearch: true
 };
@@ -36,11 +36,11 @@ Template.searchResult.rendered = function() {
 };
 
 Template.searchBar.events({
-    /*"keyup #search-bar": _.throttle(function(event) {
+    "keyup #search-bar": _.throttle(function(event) {
         event.preventDefault();
         var text = $(event.target).val().trim();
         EventSearch.search(text);
-    }, 200), */
+    }, 200), 
     
     "submit form": function(event) {
         event.preventDefault();
@@ -48,4 +48,4 @@ Template.searchBar.events({
         console.log("search text " + text)
         EventSearch.search(text);
     }
-});
+});*/

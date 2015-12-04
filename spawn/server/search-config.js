@@ -1,4 +1,4 @@
-SearchSource.defineSource('tasks', function(searchText, options) {
+/* SearchSource.defineSource('tasks', function(searchText, options) {
    // var options = {sort: {timeUntil: 1}};
     if(searchText) {
         var regExp = buildRegExp(searchText);
@@ -23,4 +23,4 @@ function buildRegExp(searchText) {
     var exp = new RegExp(fullExp, "i");
     console.log(typeof(exp));
     return new RegExp(fullExp, "i");
-}
+} */

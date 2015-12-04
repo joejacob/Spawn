@@ -8,6 +8,7 @@ TODO
 
 Template.addEvent.events({
   "submit form": function (event) {
+    event.preventDefault();
     // This function is called when the new task form is submitted
     var eventName = event.target.eventName.value;
     var eventDescription = event.target.eventDescription.value;
@@ -32,24 +33,28 @@ Template.addEvent.events({
     var eHours = (eHours == '00')? 12 : eHours;  
     var eventTime = eHours + ":" + timeArr[1] + suffix 
       
+    
     Tasks.insert({
-      name: eventName,
-      visibility: eventVisibility,
-      description: eventDescription,
-      time: eventTime,
-      timeUntil: timeU,
-      timeUntilDisappear: timeUD,
-      createdAt: new Date(),
-      host: Meteor.user().profile.name, 
-      hostUid: Meteor.user()._id,
-      attendees: eventAttendees,
-      locationLatLng: eventLocation
-    });
-    console.log(event)
+          name: eventName,
+          visibility: eventVisibility,
+          description: eventDescription,
+          time: eventTime,
+          timeUntil: timeU,
+          timeUntilDisappear: timeUD,
+          createdAt: new Date(),
+          host: Meteor.user().profile.name, 
+          hostUid: Meteor.user()._id,
+          attendees: eventAttendees,
+          locationLatLng: eventLocation
+    }, function(err, _id) { 
+            if(err) return;
+            console.log("created event");
+            Router.go('viewEvent', {_id: _id})}
+    );
+    
     // // Clear form
     // event.target.eventName.value = "";
     // event.target.eventDescription.value = "";
-    Router.go('eventsPage');
 
     // Prevent default form submit
     return false;
