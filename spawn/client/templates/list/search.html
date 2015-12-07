@@ -1,5 +1,23 @@
 <template name="search">
-    {{> EasySearch.Input index=tasksIndex attributes=inputAttributes}}
+    <div>
+        <span>Sort by:</span>
+        <label class="checkbox-inline"><input type="checkbox" name="hostFilter" id="hostFilter" value="" checked>Host</label>
+        <label class="checkbox-inline"><input type="checkbox" name="eventNameFilter" id="eventNameFilter" value="" checked>Event name</label>
+        <label class="checkbox-inline"><input type="checkbox" name="descriptionFilter" id="descriptionFilter" value="" checked>Description</label>
+    </div>
+
+    <div class="input-group form">
+        <input type="text" class="form-control" name="searchTerm" id="searchTerm" placeholder="search events here" />
+    </div>
+    
+
+    
+    <div class="list-group">
+        {{#each results}}
+            {{> eventItem}}
+        {{/each}}
+    </div>
+    <!--{{> EasySearch.Input index=tasksIndex attributes=inputAttributes}}
     
     <div class="list-group">
      {{#EasySearch.IfInputEmpty index=tasksIndex}}
@@ -17,5 +35,5 @@
 
      {{#EasySearch.IfNoResults index=tasksIndex}}
         <div class="no-results">No results found!</div>
-     {{/EasySearch.IfNoResults}}
+     {{/EasySearch.IfNoResults}}-->
 </template>
