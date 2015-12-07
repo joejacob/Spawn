@@ -18,36 +18,30 @@ Template.addEvent.events({
                            pic: Meteor.user().profile.picture, 
                            uid: Meteor.user()._id}];
     var eventLocation = Session.get('selectedLocation');
+    var maxPart = event.target.maxPart.value;
     
-    // getting timeUntil
+      
     var currDate = new Date();
-    var currTime = parseInt(currDate.getHours())*3600 + parseInt(currDate.getMinutes())*60 + parseInt(currDate.getSeconds());
-    var timeArr = eventTime.split(":");
-    var eventTimeInt = parseInt(timeArr[0])*3600 + parseInt(timeArr[1])*60;  
-    var timeU = (currTime < eventTimeInt) ? (eventTimeInt - currTime) : (86400 - (currTime - eventTimeInt));
-    var timeUD = 10;
+        
+        // getting countdown time difference
+        var currTime = parseInt(currDate.getHours())*3600 + parseInt(currDate.getMinutes())*60 + parseInt(currDate.getSeconds());
+        var timeArr = eventTime.split(":");
+        var eventTimeInt = parseInt(timeArr[0])*3600 + parseInt(timeArr[1])*60;  
+        var timeUb = (currTime < eventTimeInt) ? (eventTimeInt - currTime) : (86400 - (currTime - eventTimeInt));  
       
-    // convert 24-hour time to 12-hour time
-    var suffix = (timeArr[0] >= 12)? 'pm' : 'am';
-    var eHours = (timeArr[0] > 12)? timeArr[0] -12 : timeArr[0];
-    var eHours = (eHours == '00')? 12 : eHours;  
-    var eventTime = eHours + ":" + timeArr[1] + suffix 
-      
-    
     Tasks.insert({
           name: eventName,
           visibility: eventVisibility,
           description: eventDescription,
           time: eventTime,
-          timeUntil: timeU,
-          timeUntilDisappear: timeUD,
           createdAt: new Date(),
+          timeU: timeUb,
           host: Meteor.user().profile.name, 
           hostUid: Meteor.user()._id,
           attendees: eventAttendees,
-          locationLatLng: eventLocation
+          locationLatLng: eventLocation,
+          numParticipants: maxPart
     }, function(err, _id) { 
-            if(err) return;
             console.log("created event");
             Router.go('viewEvent', {_id: _id})}
     );

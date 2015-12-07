@@ -16,7 +16,14 @@
         <label for="EventTimeInput">Event Time (EST)</label>
         <input type="time" class="form-control" name="eventTime" id="EventTimeInput" required>
       </div>
-
+        
+        
+        <div class="form-group">
+        <label for="EventDescriptionInput">Max Number of Participants</label>
+        <input type="number" class="form-control" name="maxPart" id="maxPartInput" placeholder="5" min=2 max=999 required>
+      </div>
+     
+        
       <div class="radio-inline">
         <label>
         <input type="radio" name="eventVisibility" id="visibilityRadios1" value="public" checked>

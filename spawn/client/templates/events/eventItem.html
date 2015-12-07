@@ -6,6 +6,6 @@ Add max participants
 -->
 <template name="eventItem">
 	<a href="{{pathFor 'viewEvent'}}" class="list-group-item">
-		{{name}} BY {{host}} AT {{time}}<span class="badge">{{getCountdown}}</span><span class="badge">{{eventSize}}</span>
+		{{name}} BY {{host}} AT {{get12Time}}<span class="badge">{{getCountdown}}</span><span class="badge">{{eventSize}}/{{numParticipants}}</span>
 	</a>
 </template>
