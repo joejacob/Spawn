@@ -1,11 +1,10 @@
-<template name="addEventMap">      
-      <div class="thumbnail">
-              <div class="map-container">
-                {{#unless geolocationError}}
-                  {{> googleMap name="map" options=mapOptions}}
-                {{else}}
-                  Geolocation failed: {{geolocationError}}
-                {{/unless}}
-              </div>
-      </div>
+<template name="addEventMap">
+    <div class="thumbnail">
+        <div class="places-searchbox">
+            <input type="text" class="form-control" id="places">
+        </div>
+        <div class="map-container">
+            {{#unless geolocationError}} {{> googleMap name="map" options=mapOptions}} {{else}} Geolocation failed: {{geolocationError}} {{/unless}}
+        </div>
+    </div>
 </template>

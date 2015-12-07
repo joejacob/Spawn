@@ -17,3 +17,9 @@ Accounts.onCreateUser(function(options, user) {
     }
     return user;
 });
+
+Accounts.onLogin(function(attempt){
+    if(attempt.user){
+        attempt.user.profile.picture  = "http://graph.facebook.com/" + attempt.user.services.facebook.id + "/picture/?type=large";
+    }
+});
