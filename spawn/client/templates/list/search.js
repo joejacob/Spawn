@@ -1,9 +1,14 @@
 // reactive data for search results and checkboxes
 searchResults = {
     keys: {"results" : null,
-          "hostFilter": "true",
-          "eventNameFilter": "true",
-          "descriptionFilter": "true"},
+          "hostFilter": true,
+          "eventNameFilter": true,
+          "descriptionFilter": true,
+          "hostSort": false,
+          "eventNameSort": false,
+          "capacitySort": false,
+          "timeUntilSort": true,
+          "direction": true},
     deps: {"results": new Deps.Dependency},
     get: function (key) {
       this.ensureDeps(key);
@@ -47,6 +52,21 @@ var searching = function(text) {
         if(f.length==0) {
             f = ['host', 'name', 'description'];
         }
+    
+    
+        // figure out how to sort
+        var s = []
+        if(searchResults.get("hostSort"))   s=['host'];
+        if(searchResults.get("eventNameSort"))   s=['name'];
+        if(searchResults.get("capacitySort"))   s=['numParticipants'];
+        if(searchResults.get("timeUntilSort"))   s=['timeU'];
+        
+        // direction of sorting
+        var d = 1;
+        if(!searchResults.get("direction")) { 
+            d = -1;
+            s.push('desc');
+        }
         
         // make new search index  
         TasksIndex = new EasySearch.Index({
@@ -54,7 +74,7 @@ var searching = function(text) {
             fields: f,
             engine: new EasySearch.Minimongo({
                 sort: function() {
-                    return ['timeU']
+                    return [s]
                 }
             })
         });
@@ -62,7 +82,14 @@ var searching = function(text) {
         // perform the search
         var searchTerm = text;
         if(searchTerm.trim().length == 0) {
-            searchResults.set("results", Tasks.find({}, {sort: {timeU: 1}}));
+            if(s[0] == 'host') 
+                searchResults.set("results", Tasks.find({}, {sort: {host: d}}));
+            if(s[0] == 'name') 
+                searchResults.set("results", Tasks.find({}, {sort: {name: d}}));
+            if(s[0] == 'numParticipants') 
+                searchResults.set("results", Tasks.find({}, {sort: {numParticipants: d}}));
+            if(s[0] == 'timeU') 
+                searchResults.set("results", Tasks.find({}, {sort: {timeU: d}}));
         }
         else {
             searchResults.set("results", TasksIndex.search(searchTerm).mongoCursor);
@@ -90,6 +117,48 @@ Template.search.events({
         if($(event.target).is(':checked')) searchResults.set("descriptionFilter", true);
         else searchResults.set("descriptionFilter", false);
         searching(document.getElementById("searchTerm").value);
+    },
+    
+    "click #hostRadio" : function(event) {
+        searchResults.set("hostSort", true);
+        searchResults.set("eventNameSort", false);
+        searchResults.set("capacitySort", false);
+        searchResults.set("timeUntilSort", false);
+        searching(document.getElementById("searchTerm").value);
+    },
+    
+    "click #eventNameRadio" : function(event) {
+        searchResults.set("hostSort", false);
+        searchResults.set("eventNameSort", true);
+        searchResults.set("capacitySort", false);
+        searchResults.set("timeUntilSort", false);
+        searching(document.getElementById("searchTerm").value);
+    },
+                       
+    "click #capacityRadio" : function(event) {
+        searchResults.set("hostSort", false);
+        searchResults.set("eventNameSort", false);
+        searchResults.set("capacitySort", true);
+        searchResults.set("timeUntilSort", false);
+        searching(document.getElementById("searchTerm").value);
+    },
+
+    "click #timeUntilRadio" : function(event) {
+        searchResults.set("hostSort", false);
+        searchResults.set("eventNameSort", false);
+        searchResults.set("capacitySort", false);
+        searchResults.set("timeUntilSort", true);
+        searching(document.getElementById("searchTerm").value);
+    },
+    
+    "click #ascendingRadio" : function(event) {
+        searchResults.set("direction", true);
+        searching(document.getElementById("searchTerm").value);
+    },
+    
+    "click #descendingRadio" : function(event) {
+        searchResults.set("direction", false);
+        searching(document.getElementById("searchTerm").value);
     }
 });
 
@@ -102,15 +171,26 @@ Template.search.onRendered(function() {
         else searchResults.set("eventNameFilter", false);
 
         if($(document.getElementById("descriptionFilter")).is(':checked')) searchResults.set("descriptionFilter", true);
-        else searchResults.set("descriptionFilter", false);       
+        else searchResults.set("descriptionFilter", false);
+    
+        searchResults.set("hostSort", false);
+        searchResults.set("eventNameSort", false);
+        searchResults.set("capacitySort", false);
+        searchResults.set("timeUntilSort", true);
+    
+        searchResults.set("direction", true);
         searching(document.getElementById("searchTerm").value);       
 });
 
 Template.search.helpers({
     results: function() {
-        if(searchResults.get("results") == null) {
+        /*if(searchResults.get("results") == null) {
             searchResults.set("results", Tasks.find({}, {sort: {timeU: 1}}));
-        }
+        }*/
         return searchResults.get("results");
+    },
+    
+    noResults: function() {
+        return searchResults.get("results") == null;
     }
 });

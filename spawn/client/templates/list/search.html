@@ -1,22 +1,43 @@
 <template name="search">
-    <div>
-        <span>Sort by:</span>
-        <label class="checkbox-inline"><input type="checkbox" name="hostFilter" id="hostFilter" value="" checked>Host</label>
-        <label class="checkbox-inline"><input type="checkbox" name="eventNameFilter" id="eventNameFilter" value="" checked>Event name</label>
-        <label class="checkbox-inline"><input type="checkbox" name="descriptionFilter" id="descriptionFilter" value="" checked>Description</label>
+    <div class="row">
+        <div class="pull-left">
+            <span>Filter by:</span>
+            <label class="checkbox-inline"><input type="checkbox" name="hostFilter" id="hostFilter" value="" checked>Host</label>
+            <label class="checkbox-inline"><input type="checkbox" name="eventNameFilter" id="eventNameFilter" value="" checked>Event name</label>
+            <label class="checkbox-inline"><input type="checkbox" name="descriptionFilter" id="descriptionFilter" value="" checked>Description</label>
+        </div>
+        <div class="pull-right">
+            <span>Sort by:</span>
+            <label class="radio-inline"><input type="radio" name="sortRadio" id="hostRadio" value="">Host</label>
+            <label class="radio-inline"><input type="radio" name="sortRadio" id="eventNameRadio" value="">Event name</label>
+            <label class="radio-inline"><input type="radio" name="sortRadio" id="capacityRadio" value="">Capacity</label>
+            <label class="radio-inline"><input type="radio" name="sortRadio" id="timeUntilRadio" value="" checked="checked">Time left</label>
+        </div>
     </div>
-
-    <div class="input-group form">
-        <input type="text" class="form-control" name="searchTerm" id="searchTerm" placeholder="search events here" />
+    <div class="row">
+        <div class="input-group form pull-left">
+            <input type="text" class="form-control" name="searchTerm" id="searchTerm" placeholder="search events here" />
+        </div>
+        <div class="pull-right">
+            <span>Direction:</span>
+            <label class="radio-inline"><input type="radio" name="directionRadio" id="ascendingRadio" value="" checked="checked">Ascending</label>
+            <label class="radio-inline"><input type="radio" name="directionRadio" id="descendingRadio" value="">Descending</label>
+        </div>
     </div>
     
-
     
-    <div class="list-group">
-        {{#each results}}
-            {{> eventItem}}
-        {{/each}}
+
+    <div class="row">
+        <div class="list-group">
+            {{#each results}}
+                {{> eventItem}}
+            {{/each}}
+        </div>
     </div>
+    
+    {{#if noResults}}
+         <div class="no-results">No results found!</div>
+    {{/if}}
     <!--{{> EasySearch.Input index=tasksIndex attributes=inputAttributes}}
     
     <div class="list-group">

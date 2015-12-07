@@ -33,3 +33,15 @@ Template.eventItem.helpers({
         return this.color;
     }*/
 });
+
+// should be implemented later
+/*
+Template.eventItem.onRendered(function() {
+    var currDate = new Date()
+    if(this.createdAt && this.timeU) {
+        console.log(this.createdAt)
+        if((currDate.getTime() - this.createdAt.getTime())/1000 >= (7200 + this.timeU)) {
+            Tasks.remove({_id: this._id});
+        }
+    }
+});*/
