@@ -18,6 +18,7 @@ Template.addEvent.events({
                            pic: Meteor.user().profile.picture, 
                            uid: Meteor.user()._id}];
     var eventLocation = Session.get('selectedLocation');
+    var eventlocationName = Session.get('locationName');
     var maxPart = event.target.maxPart.value;
       
     var currDate = new Date();
@@ -39,6 +40,7 @@ Template.addEvent.events({
           hostUid: Meteor.user()._id,
           attendees: eventAttendees,
           locationLatLng: eventLocation,
+          locationName: eventlocationName,
           numParticipants: maxPart
     }, function(err, _id) { 
             console.log("created event");

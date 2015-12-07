@@ -11,7 +11,11 @@ Template.profilePage.helpers({
             console.log(this.profile)
  		    return Tasks.find({host: this.profile.name}, {sort: {createdAt: -1}});
         }
-	}
+	},
+
+    friends: function() {   
+        if(this.profile) {
+            // return something
+        }
+    }
 });
-
-
