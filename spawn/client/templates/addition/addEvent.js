@@ -18,6 +18,7 @@ Template.addEvent.events({
                            pic: Meteor.user().profile.picture, 
                            uid: Meteor.user()._id}];
     var eventLocation = Session.get('selectedLocation');
+    var locationName = Session.get('locationName');
     
     // getting timeUntil
     var currDate = new Date();
@@ -45,7 +46,8 @@ Template.addEvent.events({
           host: Meteor.user().profile.name, 
           hostUid: Meteor.user()._id,
           attendees: eventAttendees,
-          locationLatLng: eventLocation
+          locationLatLng: eventLocation,
+          locationName: locationName
     }, function(err, _id) { 
             if(err) return;
             console.log("created event");
