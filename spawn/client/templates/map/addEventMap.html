@@ -1,16 +1,10 @@
-<template name="addEventMap">      
-      <div class="thumbnail">
-          <div class="places-searchbox">
+<template name="addEventMap">
+    <div class="thumbnail">
+        <div class="places-searchbox">
             <input type="text" class="form-control" id="places">
-              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOoNFEqag0ad113n-gkTlXU9cTvixd2Lk&libraries=places"
-         async defer></script>
-          </div>
-              <div class="map-container">
-                {{#unless geolocationError}}
-                  {{> googleMap name="map" options=mapOptions}}
-                {{else}}
-                  Geolocation failed: {{geolocationError}}
-                {{/unless}}
-              </div>
-      </div>
+        </div>
+        <div class="map-container">
+            {{#unless geolocationError}} {{> googleMap name="map" options=mapOptions}} {{else}} Geolocation failed: {{geolocationError}} {{/unless}}
+        </div>
+    </div>
 </template>
