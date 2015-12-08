@@ -21,6 +21,18 @@ Template.eventItem.helpers({
         var eHours = (timeArr[0] > 12)? timeArr[0] -12 : timeArr[0];
         var eHours = (eHours == '00')? 12 : eHours;  
         return eHours + ":" + timeArr[1] + suffix 
+    },
+
+    getDistance: function() {
+        var latLng = Geolocation.latLng();
+
+        if (latLng) {
+            var meters = google.maps.geometry.spherical.computeDistanceBetween(
+                new google.maps.LatLng(this.locationLatLng.lat, this.locationLatLng.lng),
+                new google.maps.LatLng(latLng.lat, latLng.lng));
+            var miles = parseFloat(Math.round((meters * 0.000621371192) * 100) / 100).toFixed(1);
+            return miles;
+        }
     }
     
     /*getColor: function() {
