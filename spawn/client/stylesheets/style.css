@@ -65,10 +65,11 @@ body {
     min-height: 50px;
 }
 
-.thumbnail {
+.tile-thumbnail {
     text-align: center;
     min-height: 200px;
 }
+
 
 
 /* Single Event Page */
