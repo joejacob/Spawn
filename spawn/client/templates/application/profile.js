@@ -15,7 +15,7 @@ Template.profilePage.helpers({
 
     friends: function() {   
         if(this.profile) {
-            //console.log(this.profile.friends);
+            console.log(this.profile.friends);
             return this.profile.friends;
         }
     }
