@@ -1,10 +1,12 @@
 <template name="eventsPage">
-	<h1>Choose an event!</h1>
+    <h1 id="currentEvents">Happening Now</h1>
     <!--{{> searchBar}}
     {{> searchResult}}-->
-    <div class="list-group">
+    <div class="row">
         {{#each tasks}}
+        <div class="col-sm-4">
             {{> eventItem}}
+        </div>
         {{/each}}
     </div>
 </template>

@@ -5,7 +5,27 @@ Add max participants
 
 -->
 <template name="eventItem">
-	<a href="{{pathFor 'viewEvent'}}" class="list-group-item">
-		{{name}} BY {{host}} AT {{time}}<span class="badge">{{getCountdown}}</span><span class="badge">{{eventSize}}</span>
-	</a>
+    <a href="{{pathFor 'viewEvent'}}" class="thumbnail">
+
+        <div class="row"><span><h2>{{name}}</h2></span></div>
+        <div class="row">
+            <span><h6>Hosted by {{host}}</h6></span>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}> </div>
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}></div>
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}></div>
+            <div class="col-xs-2 tile-bar">
+                <h1>+5</h1></div>
+            <div class="col-xs-2"><span class="badge">{{eventSize}}</span></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}> </div>
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}></div>
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}></div>
+            <div class="col-xs-2 tile-bar">
+                <h1>+5</h1></div>
+            <div class="col-xs-2"><span class="badge">{{getCountdown}}</span></div>
+        </div>
+    </a>
 </template>

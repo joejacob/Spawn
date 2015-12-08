@@ -1,76 +1,105 @@
 /* Whole App */
 
 body {
-  background: #eee;
-  color: #666666;
+    background: rgba(255, 255, 255, 0.9);
+    color: #666666;
 }
 
 #spawnLogo {
-  margin-left: 30px;
+    margin-left: 30px;
 }
 
-#spawnLogo, #spawnPlus {
-  /*margin-top: 7px;*/
+#spawnLogo,
+#spawnPlus {
+    /*margin-top: 7px;*/
 }
 
 .customFBLog {
-  padding: 3px 10px 3px 10px;
-  margin-left: 8px;
+    padding: 3px 10px 3px 10px;
+    margin-left: 8px;
 }
 
 #loginSection {
-  margin-top: 10px;
-  margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #ownProfGlyph {
-  margin-right: 5px;
+    margin-right: 5px;
 }
-
-
 
 
 /* User Profile Page */
 
 #profilePageName {
-  margin-top: 45px;
+    margin-top: 45px;
 }
 
 
+/* Main Page */
+
+.jumbotron {
+    background: rgba(28, 173, 251, 0.5);
+    color: black;
+}
+
+#currentEvents {
+    text-align: center;
+}
+
+
+/* Tile display */
+
+.tile-bar {
+    max-height: 50px;
+    min-height: 50px;
+}
+
+.info-bar {}
+
+.tile-image {
+    max-height: 50px;
+    min-height: 50px;
+}
+
+.thumbnail {
+    text-align: center;
+    min-height: 200px;
+}
 
 
 /* Single Event Page */
 
 #joinedImg {
-  max-width: 160px;
-  max-height: 160px;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  /*margin-bottom: 10px;*/
+    max-width: 160px;
+    max-height: 160px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    /*margin-bottom: 10px;*/
 }
 
 #joinedImgBox {
-  max-width: 180px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+    max-width: 180px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #joinedName {
-  /*margin-top: 10px;*/
-  text-align: center;
-  margin-bottom: 0px;
+    /*margin-top: 10px;*/
+    text-align: center;
+    margin-bottom: 0px;
 }
 
 #eventTitle {
-  text-align: center;
-  margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .map-container {
-  width: 800px;
-  max-width: 100%;
-  height: 500px;
+    width: 800px;
+    max-width: 100%;
+    height: 500px;
 }
