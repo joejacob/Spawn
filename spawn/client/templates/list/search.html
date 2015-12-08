@@ -1,23 +1,60 @@
-<template name="searchBar">
-        <form class="navbar-form" role="search">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="search events here" name="searchText" id="search-bar">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                </div>
-            </div>
-        </form>
-</template>
-
-<template name = "searchResult">
-    <div class="list-group">
-        <div id="search-meta">
-            {{#if isLoading}}
-                searching ...
-            {{/if}}
+<template name="search">
+    <div class="row">
+        <div class="pull-left">
+            <span>Filter by:</span>
+            <label class="checkbox-inline"><input type="checkbox" name="hostFilter" id="hostFilter" value="" checked>Host</label>
+            <label class="checkbox-inline"><input type="checkbox" name="eventNameFilter" id="eventNameFilter" value="" checked>Event name</label>
+            <label class="checkbox-inline"><input type="checkbox" name="descriptionFilter" id="descriptionFilter" value="" checked>Description</label>
         </div>
-        {{#each getTasks}}
+        <div class="pull-right">
+            <span>Sort by:</span>
+            <label class="radio-inline"><input type="radio" name="sortRadio" id="hostRadio" value="">Host</label>
+            <label class="radio-inline"><input type="radio" name="sortRadio" id="eventNameRadio" value="">Event name</label>
+            <label class="radio-inline"><input type="radio" name="sortRadio" id="capacityRadio" value="">Capacity</label>
+            <label class="radio-inline"><input type="radio" name="sortRadio" id="timeUntilRadio" value="" checked="checked">Time left</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group form pull-left">
+            <input type="text" class="form-control" name="searchTerm" id="searchTerm" placeholder="search events here" />
+        </div>
+        <div class="pull-right">
+            <span>Direction:</span>
+            <label class="radio-inline"><input type="radio" name="directionRadio" id="ascendingRadio" value="" checked="checked">Ascending</label>
+            <label class="radio-inline"><input type="radio" name="directionRadio" id="descendingRadio" value="">Descending</label>
+        </div>
+    </div>
+    
+    
+
+    <div class="row">
+        <div class="list-group">
+            {{#each results}}
+                {{> eventItem}}
+            {{/each}}
+        </div>
+    </div>
+    
+    {{#if noResults}}
+         <div class="no-results">No results found!</div>
+    {{/if}}
+    <!--{{> EasySearch.Input index=tasksIndex attributes=inputAttributes}}
+    
+    <div class="list-group">
+     {{#EasySearch.IfInputEmpty index=tasksIndex}}
+        {{#each tasks}}
             {{> eventItem}}
         {{/each}}
+    {{/EasySearch.IfInputEmpty}}
     </div>
+    
+    <div class="list-group">
+        {{#EasySearch.Each index=tasksIndex}}
+            {{> eventItem}}
+        {{/EasySearch.Each}}
+     </div>
+
+     {{#EasySearch.IfNoResults index=tasksIndex}}
+        <div class="no-results">No results found!</div>
+     {{/EasySearch.IfNoResults}}-->
 </template>

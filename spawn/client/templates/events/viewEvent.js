@@ -8,15 +8,20 @@ TODO:
 
 Template.viewEvent.events({
 	"click #joinEvent": function () {
-		// console.log(Meteor.user().services.facebook)
-		console.log(Meteor.user());
-        
-        // only if user isnt already in the event
-        Tasks.update(this._id, {
-            $push: {attendees: {name: Meteor.user().profile.name, 
-                                pic: Meteor.user().profile.picture, 
-                                uid: Meteor.user()._id}}
-        }); 
+        if(this.attendees.length < this.numParticipants) {
+            // console.log(Meteor.user().services.facebook)
+            console.log(Meteor.user());
+
+            // only if user isnt already in the event
+            Tasks.update(this._id, {
+                $push: {attendees: {name: Meteor.user().profile.name, 
+                                    pic: Meteor.user().profile.picture, 
+                                    uid: Meteor.user()._id}}
+            }); 
+        }
+        else {
+            toastr.error("This event's full!")
+        }
         
 	},
     

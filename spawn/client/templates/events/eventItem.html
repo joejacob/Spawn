@@ -28,4 +28,7 @@ Add max participants
             <div class="col-xs-2"><span class="badge">{{getCountdown}}</span></div>
         </div>
     </a>
+    <a href="{{pathFor 'viewEvent'}}" class="list-group-item">
+		{{name}} BY {{host}} AT {{get12Time}}<span class="badge">{{getCountdown}}</span><span class="badge">{{eventSize}}/{{numParticipants}}</span><span class="badge">{{getDistance}} miles</span>
+	</a>
 </template>

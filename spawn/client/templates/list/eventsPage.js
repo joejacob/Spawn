@@ -5,7 +5,6 @@ TODO:
 
 Template.eventsPage.helpers({
     tasks: function () {
-
         return Tasks.find({}, {
             sort: {
                 timeUntil: 1
