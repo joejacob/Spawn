@@ -42,13 +42,18 @@ Accounts.onLogin(function(attempt){
 
         HTTP.get("https://graph.facebook.com/" + Meteor.user().services.facebook.id + "/friends", arguments, function(error, result) {
             // console.log(result)
-            temp_friends = result.data.data;
+            var temp_friends = result.data.data;
+            var updated_friends = [];
             for(var i=0; i<temp_friends.length; i++) {
                 temp_friends[i].pic = "http://graph.facebook.com/" + temp_friends[i].id + "/picture/?type=large";
                 var friend_account = Meteor.users.findOne({'services.facebook.id': temp_friends[i].id})
-                temp_friends[i].uid = friend_account._id;
+                // console.log(friend_account);
+                if (friend_account != undefined && friend_account != null) {
+                    temp_friends[i].uid = friend_account._id;
+                    updated_friends.push(temp_friends[i]);
+                }
             }
-            cur.friends = temp_friends;
+            cur.friends = updated_friends;
             Meteor.users.update(Meteor.user()._id, {$set: {profile: cur}});
         });
     }

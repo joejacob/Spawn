@@ -22,10 +22,15 @@ Template.eventsPage.helpers({
         }
         
     },
+    
+    myevents: function() {
+        return Tasks.find({'attendees.uid': Meteor.user()._id});
+    },
+    
     myfirstevent: function() {
         return Tasks.find({'attendees.uid': Meteor.user()._id}).fetch();
     },
     mylastevents: function(){
-    return _.rest(Tasks.find({'attendees.uid': Meteor.user()._id}).fetch());
-}
+        return _.rest(Tasks.find({'attendees.uid': Meteor.user()._id}).fetch());
+    }
 });
