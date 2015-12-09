@@ -30,7 +30,7 @@ Accounts.onCreateUser(function(options, user) {
     return user;
 });
 
-Accounts.onLogin(function(attempt){
+Accounts.onLogin(function(attempt) {
     if(attempt.user){
         var cur = Meteor.user().profile;
         cur.picture  = "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture/?type=large";

@@ -71,7 +71,7 @@ UI.registerHelper('getCountdownString', function () {
             var m = (minutes.length == 1) ? ("0" + minutes):minutes;
             var seconds = "" + (timeVal - hours*3600 - minutes*60);
             var s = (seconds.length == 1) ? ("0" + seconds):seconds;
-            var t = "" + h + " hours, " + m + " minutes " + s + " seconds";
+            var t = "" + h + " hours, " + m + " minutes, " + s + " seconds";
             return t;
         }
     }
