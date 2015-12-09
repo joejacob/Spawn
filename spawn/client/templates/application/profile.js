@@ -26,3 +26,9 @@ Template.profilePage.helpers({
         }
     }
 });
+
+
+// Template.profilePage.rendered = function () {
+//     Meteor.call('refreshFriends', this);
+//     console.log('refreshing friends');
+// };
