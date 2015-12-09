@@ -53,24 +53,38 @@ body {
 }
 /* Tile display */
 
-.tile-bar {
-    max-height: 50px;
-    min-height: 50px;
+.people-going{
+    min-width:50px;
 }
 
-.info-bar {}
+.tile-bar {
+    max-height: 100px;
+    min-height: 100px;
+}
+
+#numParticipants{
+    text-align: center;
+    max-height: 100px;
+    min-height: 100px;
+    vertical-align: middle;
+}
 
 .tile-image {
-    max-height: 50px;
-    min-height: 50px;
+    max-height: 100px;
+    min-height: 100px;
 }
 
 .tile-thumbnail {
     text-align: center;
-    min-height: 200px;
 }
 
-
+.big-button{
+    width:80%;
+}
+.big-label{
+     display: block;
+    width:100%;
+}
 
 /* Single Event Page */
 

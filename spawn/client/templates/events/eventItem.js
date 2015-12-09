@@ -33,6 +33,14 @@ Template.eventItem.helpers({
             var miles = parseFloat(Math.round((meters * 0.000621371192) * 100) / 100).toFixed(1);
             return miles;
         }
+    },
+    
+    getProgress: function(){
+        if(this.attendees) {
+			return this.attendees.length/this.numParticipants*100;
+		}
+		return 0;
+        
     }
     
     /*getColor: function() {

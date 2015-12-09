@@ -1,0 +1,24 @@
+<template name="listEventItem">
+<a href="{{pathFor 'viewEvent'}}" class="tile-thumbnail">
+
+        <div class="row"><span><h2>{{name}}</h2></span></div>
+        <div class="row">
+            <span><h6>Hosted by {{host}} at {{get12Time}}</h6></span>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}> </div>
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}></div>
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}></div>
+            <div class="col-xs-2 tile-bar">
+                <h1>+{{numParticipants}}</h1></div>
+            <div class="col-xs-2"><span class="badge">{{getDistance}} miles</span></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}> </div>
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}></div>
+            <div class="col-xs-2 tile-bar"><img class="img-circle tile-image" src={{hostPic}}></div>
+            <div class="col-xs-2 tile-bar"></div>
+            <div class="col-xs-2"><span class="badge">{{getCountdown}}</span></div>
+        </div>
+    </a>
+</template>
