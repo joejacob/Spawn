@@ -5,7 +5,7 @@ Add max participants
 
 -->
 <template name="eventItem">
-        <a href="{{pathFor 'viewEvent'}}" class="tile-thumbnail">
+        <a href="{{pathFor 'viewEvent'}}" class="tile-thumbnail thumbnail">
             <span><h2 style="margin-bottom:10px">{{name}}</h2></span>
             <div class="row">
                 <span><h5>Hosted by {{host}} at {{get12Time}}</h5></span>
@@ -18,7 +18,7 @@ Add max participants
                 <div class="col-xs-8 tile-bar">
                     <div class="row">
                         <div class="progress" style="margin-bottom:0px">
-                            <div class="progress-bar progress-bar-striped active people-going" role="progressbar" aria-valuenow="{{attendees.length}}" aria-valuemin="0" aria-valuemax="{{numParticipants}}" style="width: {{getProgress}}%">
+                            <div class="progress-bar people-going" id="progressbar" role="progressbar" aria-valuenow="{{attendees.length}}" aria-valuemin="0" aria-valuemax="{{numParticipants}}" style="width: {{getProgress}}%">
                                 {{attendees.length}} / {{numParticipants}}
                             </div>
                         </div>

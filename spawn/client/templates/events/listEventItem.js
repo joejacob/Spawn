@@ -1,15 +1,10 @@
-/*
-TODO:
-    - create an autodelete timer
-    - changes color
-*/
-
-Template.eventItem.events({
+Template.listEventItem.events({
     "click #distanceButton": function (event){
         event.preventDefault();
         window.open("https://maps.google.com?saddr=Current+Location&daddr="+this.locationLatLng.lat+","+ this.locationLatLng.lng);
     },
      "click #leaveEvent": function () {
+        console.log(this);
          event.preventDefault();
         if(Tasks.findOne({_id: this._id}).hostUid == Meteor.user()._id) {
             var atten = Tasks.findOne({_id: this._id}).attendees;
@@ -35,9 +30,26 @@ Template.eventItem.events({
                      {multi : true});
             console.log("left event");
         }
+	},
+    "click #joinEvent": function () {
+        if(this.attendees.length < this.numParticipants) {
+            // console.log(Meteor.user().services.facebook)
+            console.log(Meteor.user());
+            
+            // only if user isnt already in the event
+            Tasks.update(this._id, {
+                $push: {attendees: {name: Meteor.user().profile.name, 
+                                    pic: Meteor.user().profile.picture, 
+                                    uid: Meteor.user()._id}}
+            }); 
+        }
+        else {
+            toastr.error("This event's full!")
+        }
+        
 	}
 });
-Template.eventItem.helpers({
+Template.listEventItem.helpers({
     
 	eventSize: function () {
 		if(this.attendees) {
@@ -45,7 +57,21 @@ Template.eventItem.helpers({
 		}
 		return 0;
 	},
-    
+    get6attendees: function(){
+        if(this.attendees) {
+			return _.first(this.attendees, 6);
+		}
+        
+    },
+    offset: function(){
+      return 6-_.first(this.attendees, 6).length;
+    },
+    isParticipating: function() {
+        if(Tasks.findOne({_id: this._id})) {
+            return _.find(Tasks.findOne({_id: this._id}).attendees, 
+                          function(obj) {return obj.uid == Meteor.user()._id});
+        }
+    },
     get12Time: function() {
         // convert 24-hour time to 12-hour time
         var timeArr = this.time.split(":")
@@ -72,6 +98,10 @@ Template.eventItem.helpers({
 			return this.attendees.length/this.numParticipants*100;
 		}
 		return 0;
+        
+    },
+    getFirstName: function(){
+        return this.name.split(' ')[0];
         
     }
     
