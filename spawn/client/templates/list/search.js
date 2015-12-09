@@ -8,6 +8,7 @@ searchResults = {
           "eventNameSort": false,
           "capacitySort": false,
           "timeUntilSort": true,
+          "distanceSort": false,
           "direction": true},
     deps: {"results": new Deps.Dependency},
     get: function (key) {
@@ -53,14 +54,14 @@ var searching = function(text) {
             f = ['host', 'name', 'description'];
         }
     
-    
         // figure out how to sort
         var s = []
         if(searchResults.get("hostSort"))   s=['host'];
         if(searchResults.get("eventNameSort"))   s=['name'];
         if(searchResults.get("capacitySort"))   s=['numParticipants'];
         if(searchResults.get("timeUntilSort"))   s=['timeU'];
-        
+        if(searchResults.get("distanceSort"))   s=['locationLatLng'];
+    
         // direction of sorting
         var d = 1;
         if(!searchResults.get("direction")) { 
@@ -69,15 +70,35 @@ var searching = function(text) {
         }
         
         // make new search index  
-        TasksIndex = new EasySearch.Index({
-            collection: Tasks,
-            fields: f,
-            engine: new EasySearch.Minimongo({
-                sort: function() {
-                    return [s]
-                }
-            })
-        });
+        if(s[0] != 'locationLatLng') {
+            TasksIndex = new EasySearch.Index({
+                collection: Tasks,
+                fields: f,
+                engine: new EasySearch.Minimongo({
+                    sort: function() {
+                        return [s]
+                    }
+                })
+            });
+        }
+        else {
+            TasksIndex = new EasySearch.Index({
+                collection: Tasks,
+                fields: f,
+                engine: new EasySearch.Minimongo({
+                    sort: function() {
+                        var latLng = Geolocation.latLng();
+                        if (latLng && this.locationLatLng) {
+                            var meters = google.maps.geometry.spherical.computeDistanceBetween(
+                                new google.maps.LatLng(this.locationLatLng.lat, this.locationLatLng.lng),
+                                new google.maps.LatLng(latLng.lat, latLng.lng));
+                            var miles = parseFloat(Math.round((meters * 0.000621371192) * 100) / 100).toFixed(1);
+                            return miles;
+                        }
+                    }
+                })
+            });
+        }
         
         // perform the search
         var searchTerm = text;
@@ -124,6 +145,7 @@ Template.search.events({
         searchResults.set("eventNameSort", false);
         searchResults.set("capacitySort", false);
         searchResults.set("timeUntilSort", false);
+        searchResults.set("distanceSort", false);
         searching(document.getElementById("searchTerm").value);
     },
     
@@ -132,6 +154,7 @@ Template.search.events({
         searchResults.set("eventNameSort", true);
         searchResults.set("capacitySort", false);
         searchResults.set("timeUntilSort", false);
+        searchResults.set("distanceSort", false);
         searching(document.getElementById("searchTerm").value);
     },
                        
@@ -140,6 +163,7 @@ Template.search.events({
         searchResults.set("eventNameSort", false);
         searchResults.set("capacitySort", true);
         searchResults.set("timeUntilSort", false);
+        searchResults.set("distanceSort", false);
         searching(document.getElementById("searchTerm").value);
     },
 
@@ -148,6 +172,16 @@ Template.search.events({
         searchResults.set("eventNameSort", false);
         searchResults.set("capacitySort", false);
         searchResults.set("timeUntilSort", true);
+        searchResults.set("distanceSort", false);
+        searching(document.getElementById("searchTerm").value);
+    },
+    
+    "click #distanceRadio" : function(event) {
+        searchResults.set("hostSort", false);
+        searchResults.set("eventNameSort", false);
+        searchResults.set("capacitySort", false);
+        searchResults.set("timeUntilSort", false);
+        searchResults.set("distanceSort", true);
         searching(document.getElementById("searchTerm").value);
     },
     
@@ -177,6 +211,7 @@ Template.search.onRendered(function() {
         searchResults.set("eventNameSort", false);
         searchResults.set("capacitySort", false);
         searchResults.set("timeUntilSort", true);
+        searchResults.set("distanceSort", false);
     
         searchResults.set("direction", true);
         searching(document.getElementById("searchTerm").value);       

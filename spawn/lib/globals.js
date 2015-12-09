@@ -2,7 +2,7 @@ UI.registerHelper('getCountdown', function () {
     var currDate = new Date();
 
     // checking to see if event needs to be deleted after 2 hours/if time elapsed
-    if((currDate.getTime() - this.createdAt.getTime())/1000 >= (7200 + this.timeU)) {
+    if(this.createdAt &&(currDate.getTime() - this.createdAt.getTime())/1000 >= (7200 + this.timeU)) {
         Tasks.remove({_id: this._id});
     }
     else{

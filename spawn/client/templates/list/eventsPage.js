@@ -23,6 +23,7 @@ Template.eventsPage.helpers({
         
     },
     myevents: function() {
-        return Tasks.find({'attendees.uid': Meteor.user()._id});
+        if(Meteor.user())
+            return Tasks.find({'attendees.uid': Meteor.user()._id});
     }
 });
