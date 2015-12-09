@@ -78,7 +78,9 @@ var searching = function (text) {
         d = -1;
         s.push('desc');
     }
-
+    console.log(d)
+        console.log(s)
+        
     // make new search index  
     if (s[0] != 'locationLatLng') {
         TasksIndex = new EasySearch.Index({
@@ -92,11 +94,11 @@ var searching = function (text) {
         });
     } else {
         TasksIndex = new EasySearch.Index({
-            collection: Tasks,
+            collection: localTasks,
             fields: f,
             engine: new EasySearch.Minimongo({
                 sort: function () {
-
+                    return [s]
                 }
             })
         });
@@ -123,6 +125,7 @@ var searching = function (text) {
         }
         if (s[0] == 'locationLatLng') {
             var cursor = Tasks.find({});
+            localTasks.remove({});
             cursor.forEach(function (ltask) {
                 var miles;
                 if (latLng) {
@@ -149,18 +152,14 @@ var searching = function (text) {
                                 localDist: miles
                             })
                     }}); 
-            
-            var kursor = localTasks.find({});
-            kursor.forEach(function (ltask) {
-                var p = ltask.localDist;
-            });
-            searchResults.set("results", localTasks.find({}, {
-                sort: {
-                    localDist: d
-                }
-            }));
+            console.log(searchResults.get("privateFilter"));
+            if(searchResults.get("privateFilter")) {searchResults.set("results", localTasks.find({$and: [{visibility: 'private'}, {$or: [{hostUid: {$in: Meteor.user().profile.friends}}, {hostUid: Meteor.user()._id}]}]}, {sort: {localDist: d}}))}
+            else {searchResults.set("results", localTasks.find({}, {sort: {localDist: d}}));}
         }
-    } 
+    } else {
+        console.log(TasksIndex.search(text))
+            searchResults.set("results", TasksIndex.search(text).mongoCursor);
+    }
 }
 
 Template.search.events({
@@ -247,13 +246,15 @@ Template.search.events({
         searching(document.getElementById("searchTerm").value);
     },
 
-    "click #ascendingRadio": function (event) {
+    "click #ascendingFilter": function (event) {
         searchResults.set("direction", true);
+        console.log("asc");
         searching(document.getElementById("searchTerm").value);
     },
 
-    "click #descendingRadio": function (event) {
+    "click #descendingFilter": function (event) {
         searchResults.set("direction", false);
+        console.log("desc)");
         searching(document.getElementById("searchTerm").value);
     }
 });
@@ -285,6 +286,7 @@ Template.search.helpers({
         /*if(searchResults.get("results") == null) {
             searchResults.set("results", Tasks.find({}, {sort: {timeU: 1}}));
         }*/
+        console.log(searchResults.get("results"));
         return searchResults.get("results");
     },
 
