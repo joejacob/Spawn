@@ -1,0 +1,17 @@
+Sam Ginsburg
+	- integrated passing info between pages
+	- routing of pages and navigation
+	- MongoDB posting
+	- commenting function
+
+Joe Jacob
+	- facebook integration
+	- profile page
+
+Ethan Gottlieb
+	- set up adding events
+	- bug fixes
+
+Greg McKeon
+	- set up event page view
+	- bootstrap UI
