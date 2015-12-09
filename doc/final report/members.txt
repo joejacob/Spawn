@@ -23,3 +23,4 @@ Greg McKeon
 	- maps directions
 	- upcoming events
 	- UI
+	- AWS deployment
