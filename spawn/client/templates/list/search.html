@@ -55,12 +55,12 @@
         </div>
 
     </div>
-    <div class="row row-centered" id="results">
-            {{#each results}}
-            <div class="col-sm-4 col-centered">
-                {{> eventItem}}
+    <div class="container" id="results">
+            <div class="list-group" id="resultsList">
+                {{#each results}}
+                {{> listEventItem}}
+                {{/each}}
             </div>
-            {{/each}}
         </div>
 
     {{#if noResults}}

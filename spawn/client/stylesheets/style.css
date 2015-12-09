@@ -40,7 +40,9 @@ body {
 /* Main Page */
 
 .jumbotron {
-    background: rgba(28, 173, 251, 0.5);
+    background: #666666;
+    margin-left: -100px;
+    margin-right: -100px;
     color: black;
 }
 
@@ -53,6 +55,9 @@ body {
 }
 /* Tile display */
 
+#nearby h1, h2, h3, h4, h5, h6, h7{
+    color: #666666;
+}
 .people-going{
     min-width:50px;
 }
@@ -61,7 +66,10 @@ body {
     max-height: 150px;
     min-height: 150px;
 }
-
+#noEvents h1{
+    color:#ffffff;
+    text-align:center;
+}
 #numParticipants{
     text-align: center;
     max-height: 100px;
@@ -78,13 +86,40 @@ body {
 
 .tile-thumbnail {
     text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.tile-thumbnail .progress {
+    margin-left:15px;
+    margin-right:15px;
 }
 
 .big-button{
     width:80%;
+    margin-top:10px;
+}
+
+/* List display */
+
+.list-img{
+    min-height: 50px;
+    max-height: 50px;
+    min-width: 50px;
+    max-width: 50px;
+}
+#attendeeDiv{
+    text-align:center;
+}
+.big-button-list{
+    width:100%;
+    text-align:center;
     margin-bottom:10px;
 }
 
+.result-padded-col{
+    padding-top:0px;
+}
 
 /* Single Event Page */
 

@@ -3,7 +3,7 @@
     
     <div class="row">
         <div class="col-md-3 text-left">
-            <h3>{{getCountdown}}</h3>
+            <!-- <h3>{{getCountdown}}</h3> -->
         </div>   
         <div class="col-md-6">
             <h1 id="eventTitle">{{name}}</h1> 
@@ -23,14 +23,22 @@
             <li class="list-group-item"><b>Time:</b> {{time}}</li>
             <li class="list-group-item"><b>Location:</b> {{locationName}}</li>
             <li class="list-group-item"><b>Description:</b> {{description}}</li>
+            <li class="list-group-item"><b>Distance:</b> {{getDistance}}</li>
           </ul>
           <div class="well">
-            <span>Participants: {{attendees.length}}/{{numParticipants}}</span>
+            <span style="font-size: large;">Participants: {{attendees.length}}/{{numParticipants}}</span>
              {{#if isParticipating}}
-                <span><button type="button" id="leaveEvent" class="btn btn-default">Leave Event</button></span>
+                <span><button type="button" id="leaveEvent" class="btn btn-danger" style="margin-left: 150px; font-size: large;">Leave Event</button></span>
              {{else}}
-                <span><button type="button" id="joinEvent" class="btn btn-default">Join Event!</button></span>
+                <span><button type="button" id="joinEvent" class="btn btn-primary" style="margin-left: 150px; font-size: large;">Join Event!</button></span>
              {{/if}}
+          </div>
+          <div>
+            <h4>Starting in:</h4>
+            <h2>{{getCountdownString}}</h2>
+          </div>
+          <div style="text-align: left;">
+            <button class="btn btn-success" style="font-size: large; margin-top: 20px; padding: 10px 10px 10px 10px;" id="directionsButton">Get Directions</button>
           </div>
         </div>
       </div>

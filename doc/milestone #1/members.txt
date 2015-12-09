@@ -1,0 +1,7 @@
+Ethan Gottlieb: Created web app project idea including features and requirements
+ 
+Sam Ginsburg: Wrote all of the source code for the initial Meteor project
+ 
+Joe Jacob: Made complete onboarding for the webapp using Sketch
+ 
+Greg McKeon: Database design and minimum viable product goals
