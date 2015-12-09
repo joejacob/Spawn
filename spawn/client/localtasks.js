@@ -1,1 +1,1 @@
-localTasks = new Mongo.Collection("localtasks");
+localTasks = new Mongo.Collection();
