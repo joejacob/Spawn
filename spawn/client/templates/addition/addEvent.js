@@ -37,7 +37,7 @@ Template.addEvent.events({
           createdAt: new Date(),
           timeU: timeUb,
           host: Meteor.user().profile.name, 
-         hostPic: Meteor.user().profile.picture,
+          hostPic: Meteor.user().profile.picture,
           hostUid: Meteor.user()._id,
           attendees: eventAttendees,
           locationLatLng: eventLocation,
