@@ -13,6 +13,12 @@ Template.profilePage.helpers({
         }
 	},
 
+    pastEvents: function () {
+        if(this.profile) {
+            return PastEvents.find({host: this.profile.name}, {sort: {createdAt: -1}});
+        }
+    },
+
     friends: function() {
         if(this.profile) {
             console.log(this.profile.friends);

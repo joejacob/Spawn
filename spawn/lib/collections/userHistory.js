@@ -1,1 +1,0 @@
-UserHistory = new Mongo.Collection("userHistory");
