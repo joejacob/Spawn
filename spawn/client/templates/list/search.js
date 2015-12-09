@@ -192,16 +192,5 @@ Template.search.helpers({
     
     noResults: function() {
         return searchResults.get("results") == null;
-    },
-    offset: function(){
-        if(searchResults.get("results").length % 3 == 0){
-            return 0;   
-        }
-        else{
-            console.log(searchResults.get("results").length);
-            return 4/(searchResults.get("results").length % 3);
-            
-        }
-        
     }
 });
