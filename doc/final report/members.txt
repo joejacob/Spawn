@@ -1,18 +1,25 @@
 Sam Ginsburg
-	- facebook pictures
-	- MongoDB posting
-	- UI
+	- facebook pictures/friends
+	- countdown timer
+	- navigation
+	- user profiles
 	- past events
+	- UI
 
 Joe Jacob
-	- event sorted and searching
-	- event time and deletion
+	- event sorting
+	- event searching
+	- event timer
+	- event deletion
 
 Ethan Gottlieb
 	- google maps api
 	- facebook friends
 	- bug fixes
+	- app design and documentation
 
 Greg McKeon
 	- google maps place searching
+	- maps directions
+	- upcoming events
 	- UI
