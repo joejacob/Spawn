@@ -22,17 +22,15 @@ Template.eventsPage.helpers({
         }
         
     },
-<<<<<<< HEAD
+    
     myevents: function() {
-        if(Meteor.user())
-            return Tasks.find({'attendees.uid': Meteor.user()._id});
-    }
-=======
+        return Tasks.find({'attendees.uid': Meteor.user()._id});
+    },
+    
     myfirstevent: function() {
         return Tasks.find({'attendees.uid': Meteor.user()._id}).fetch();
     },
     mylastevents: function(){
-    return _.rest(Tasks.find({'attendees.uid': Meteor.user()._id}).fetch());
-}
->>>>>>> 88d0ab5b000bf90e870eb96ac6341d5424ea3b58
+        return _.rest(Tasks.find({'attendees.uid': Meteor.user()._id}).fetch());
+    }
 });

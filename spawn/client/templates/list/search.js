@@ -30,6 +30,7 @@ searchResults = {
 // performs the search
 var searching = function(text) {
     var f = [];
+    var latLng = Geolocation.latLng();
         // populate search fields
         if(searchResults.get("hostFilter")) {
             f.push('host');
@@ -87,7 +88,6 @@ var searching = function(text) {
                 fields: f,
                 engine: new EasySearch.Minimongo({
                     sort: function() {
-                        var latLng = Geolocation.latLng();
                         if (latLng && this.locationLatLng) {
                             var meters = google.maps.geometry.spherical.computeDistanceBetween(
                                 new google.maps.LatLng(this.locationLatLng.lat, this.locationLatLng.lng),
@@ -111,6 +111,18 @@ var searching = function(text) {
                 searchResults.set("results", Tasks.find({}, {sort: {numParticipants: d}}));
             if(s[0] == 'timeU') 
                 searchResults.set("results", Tasks.find({}, {sort: {timeU: d}}));
+            if(s[0] == 'locationLatLong') {
+                searchResults.set("results", Tasks.find({
+                    location: {
+                        $near: {
+                            $geometry: {
+                                type: "Point",
+                                coordinates: locationLatLng
+                            }
+                        }
+                    }
+                })) 
+            }
         }
         else {
             searchResults.set("results", TasksIndex.search(searchTerm).mongoCursor);
@@ -182,6 +194,7 @@ Template.search.events({
         searchResults.set("capacitySort", false);
         searchResults.set("timeUntilSort", false);
         searchResults.set("distanceSort", true);
+        console.log("distance");
         searching(document.getElementById("searchTerm").value);
     },
     
