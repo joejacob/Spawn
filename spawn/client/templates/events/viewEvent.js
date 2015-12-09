@@ -58,6 +58,10 @@ Template.viewEvent.events({
             Tasks.remove({_id:this._id});
             Router.go("eventsPage");
         }
+    },
+    "click #directionsButton": function (event){
+        event.preventDefault();
+        window.open("https://maps.google.com?saddr=Current+Location&daddr="+this.locationLatLng.lat+","+ this.locationLatLng.lng);
     }
 });
 
@@ -81,5 +85,17 @@ Template.viewEvent.helpers({
             return _.find(Tasks.findOne({_id: this._id}).attendees, 
                           function(obj) {return obj.uid == Meteor.user()._id});
         }
-    }
+    },
+
+    getDistance: function() {
+        var latLng = Geolocation.latLng();
+
+        if (latLng) {
+            var meters = google.maps.geometry.spherical.computeDistanceBetween(
+                new google.maps.LatLng(this.locationLatLng.lat, this.locationLatLng.lng),
+                new google.maps.LatLng(latLng.lat, latLng.lng));
+            var miles = parseFloat(Math.round((meters * 0.000621371192) * 100) / 100).toFixed(1);
+            return miles;
+        }
+    },
 });
