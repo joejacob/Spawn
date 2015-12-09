@@ -20,6 +20,10 @@ Template.profilePage.helpers({
     },
 
     friends: function() {
+        if (this._id) {
+            console.log('refreshing friends');
+            Meteor.call('refreshFriends', this._id);
+        }
         if(this.profile) {
             console.log(this.profile.friends);
             return this.profile.friends;
@@ -29,6 +33,7 @@ Template.profilePage.helpers({
 
 
 // Template.profilePage.rendered = function () {
-//     Meteor.call('refreshFriends', this);
+//     Meteor.call('refreshFriends', this.data._id);
+//     console.log(this.data);
 //     console.log('refreshing friends');
 // };

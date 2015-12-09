@@ -1,1 +1,0 @@
-AllUsers = Meteor.users;
