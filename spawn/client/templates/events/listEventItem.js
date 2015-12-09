@@ -57,14 +57,14 @@ Template.listEventItem.helpers({
 		}
 		return 0;
 	},
-    get4attendees: function(){
+    get6attendees: function(){
         if(this.attendees) {
-			return _.first(this.attendees, 4);
+			return _.first(this.attendees, 6);
 		}
         
     },
     offset: function(){
-      return 4-_.first(this.attendees, 4).length;
+      return 6-_.first(this.attendees, 6).length;
     },
     isParticipating: function() {
         if(Tasks.findOne({_id: this._id})) {

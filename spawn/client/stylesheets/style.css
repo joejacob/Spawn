@@ -114,10 +114,11 @@ body {
 .big-button-list{
     width:100%;
     text-align:center;
+    margin-bottom:10px;
 }
 
 .result-padded-col{
-    padding-top:10px;
+    padding-top:0px;
 }
 
 /* Single Event Page */
