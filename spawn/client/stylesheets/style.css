@@ -38,12 +38,16 @@ body {
 
 
 /* Main Page */
+#mainJumbotron{
+   margin-left: -115px;
+    margin-right: -115px; 
+}
 
 .jumbotron {
     background: #666666;
     margin-left: -100px;
     margin-right: -100px;
-    color: black;
+    color: white;
 }
 
 #currentEvents {
