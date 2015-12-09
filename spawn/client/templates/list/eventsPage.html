@@ -1,8 +1,13 @@
 <template name="eventsPage">
     <h1 id="currentEvents">Happening Soon</h1>
     <div class="container">
-        <div class="row row-centered" id="myevents">
-            {{#each myevents}}
+        <div class="row row-centered" id="myEvents">
+            {{#with myfirstevent.[0]}}
+            <div class="col-sm-offset-{{offset}} col-sm-4 col-centered">
+                {{> eventItem}}
+            </div>
+            {{/with}}
+            {{#each mylastevents}}
             <div class="col-sm-4 col-centered">
                 {{> eventItem}}
             </div>
