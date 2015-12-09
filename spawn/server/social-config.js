@@ -1,13 +1,24 @@
-ServiceConfiguration.configurations.remove({
-    service: 'facebook'
-});
+// ServiceConfiguration.configurations.remove({
+//     service: 'facebook'
+// });
+
+// ServiceConfiguration.configurations.insert({
+//     service: 'facebook',
+//     appId: '1650844851825940',
+//     secret: '5281f547dab18a457749f5c01e44d1d9',
+//     requestPermissions: ['user_friends']
+// });
  
-ServiceConfiguration.configurations.insert({
-    service: 'facebook',
-    appId: '1650844851825940',
-    secret: '5281f547dab18a457749f5c01e44d1d9',
-    requestPermissions: ['user_friends']
-});
+ServiceConfiguration.configurations.upsert(
+    {service: 'facebook'},
+    {
+        $set: {
+            appId: '1650844851825940',
+            secret: '5281f547dab18a457749f5c01e44d1d9',
+            requestPermissions: ['user_friends']
+        }
+    }
+);
 
 Accounts.onCreateUser(function(options, user) {
     if (options.profile) {
@@ -30,7 +41,14 @@ Accounts.onLogin(function(attempt){
         }
 
         HTTP.get("https://graph.facebook.com/" + Meteor.user().services.facebook.id + "/friends", arguments, function(error, result) {
-            cur.friends = result.data.data;
+            // console.log(result)
+            temp_friends = result.data.data;
+            for(var i=0; i<temp_friends.length; i++) {
+                temp_friends[i].pic = "http://graph.facebook.com/" + temp_friends[i].id + "/picture/?type=large";
+                var friend_account = Meteor.users.findOne({'services.facebook.id': temp_friends[i].id})
+                temp_friends[i].uid = friend_account._id;
+            }
+            cur.friends = temp_friends;
             Meteor.users.update(Meteor.user()._id, {$set: {profile: cur}});
         });
     }

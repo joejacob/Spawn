@@ -13,7 +13,7 @@ Template.profilePage.helpers({
         }
 	},
 
-    friends: function() {   
+    friends: function() {
         if(this.profile) {
             console.log(this.profile.friends);
             return this.profile.friends;

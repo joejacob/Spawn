@@ -24,6 +24,6 @@ Router.route('/event/:_id', {
 Router.route('/prof/:_id', {
     name: 'profilePage',
     data: function () {
-        return AllUsers.findOne(this.params._id);
+        return Meteor.users.findOne(this.params._id);
     }
 });

@@ -15,9 +15,9 @@
             </h1>
 
             <h3>Friends</h3>
-            <div class="list-group">
+            <div id="fbPhotoCircles" class="row well">
                 {{#each friends}}
-                    {{this}}
+                    {{> userThumbnail}}
                 {{/each}}
             </div>
 
