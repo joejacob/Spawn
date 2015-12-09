@@ -1,0 +1,18 @@
+Sam Ginsburg
+	- facebook pictures
+	- MongoDB posting
+	- UI
+	- past events
+
+Joe Jacob
+	- event sorted and searching
+	- event time and deletion
+
+Ethan Gottlieb
+	- google maps api
+	- facebook friends
+	- bug fixes
+
+Greg McKeon
+	- google maps place searching
+	- UI
