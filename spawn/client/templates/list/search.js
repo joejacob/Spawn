@@ -88,13 +88,7 @@ var searching = function(text) {
                 fields: f,
                 engine: new EasySearch.Minimongo({
                     sort: function() {
-                        if (latLng && this.locationLatLng) {
-                            var meters = google.maps.geometry.spherical.computeDistanceBetween(
-                                new google.maps.LatLng(this.locationLatLng.lat, this.locationLatLng.lng),
-                                new google.maps.LatLng(latLng.lat, latLng.lng));
-                            var miles = parseFloat(Math.round((meters * 0.000621371192) * 100) / 100).toFixed(1);
-                            return miles;
-                        }
+                
                     }
                 })
             });
@@ -112,16 +106,22 @@ var searching = function(text) {
             if(s[0] == 'timeU') 
                 searchResults.set("results", Tasks.find({}, {sort: {timeU: d}}));
             if(s[0] == 'locationLatLong') {
-                searchResults.set("results", Tasks.find({
-                    location: {
-                        $near: {
-                            $geometry: {
-                                type: "Point",
-                                coordinates: locationLatLng
-                            }
-                        }
+                console.log("here");
+                var localTasks = new Mongo.Collection("localtasks");
+                localTasks = Tasks;
+                localTasks.forEach(function(ltask) {
+                    console.log("oyoo");
+                    var miles;
+                    if (latLng && this.locationLatLng) {
+                            var meters = google.maps.geometry.spherical.computeDistanceBetween(
+                                new google.maps.LatLng(this.locationLatLng.lat, this.locationLatLng.lng),
+                                new google.maps.LatLng(latLng.lat, latLng.lng));
+                            miles = parseFloat(Math.round((meters * 0.000621371192) * 100) / 100).toFixed(1);
+                        ltasks.update({}, {$set :
+                                        {localDistance : miles}})
                     }
-                })) 
+                })
+                searchResults.set("results", localTasks.find({}, {sort: {localDistance: d}}));
             }
         }
         else {
