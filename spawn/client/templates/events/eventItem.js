@@ -4,7 +4,40 @@ TODO:
     - changes color
 */
 
-
+Template.eventItem.events({
+    "click #distanceButton": function (event){
+        event.preventDefault();
+        window.open("https://maps.google.com?saddr=Current+Location&daddr="+this.locationLatLng.lat+","+ this.locationLatLng.lng);
+    },
+     "click #leaveEvent": function () {
+         event.preventDefault();
+        if(Tasks.findOne({_id: this._id}).hostUid == Meteor.user()._id) {
+            var atten = Tasks.findOne({_id: this._id}).attendees;
+            if(atten.length > 1) {
+                // making the new host
+                Tasks.update({_id : this._id},
+                             {$set : {
+                                    host: atten[1].name,
+                                    hostUid: atten[1].uid,
+                                    hostPic: atten[1].pic
+                                }})
+                // removing the old host
+                Tasks.update({_id : this._id}, 
+                     {$pull: {"attendees": {"uid": Meteor.user()._id}}},
+                     {multi : true});
+                console.log("left event");
+                Router.go("/");
+            } else {
+                toastr.error("You're the host of the event! You're going to have to delete the event if you want to leave.", "Cannot leave event")
+            }
+        } else {
+            Tasks.update({_id : this._id}, 
+                     {$pull: {attendees: {uid: Meteor.user()._id}}},
+                     {multi : true});
+            console.log("left event");
+        }
+	}
+});
 Template.eventItem.helpers({
     
 	eventSize: function () {

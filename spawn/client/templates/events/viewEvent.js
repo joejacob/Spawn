@@ -11,7 +11,7 @@ Template.viewEvent.events({
         if(this.attendees.length < this.numParticipants) {
             // console.log(Meteor.user().services.facebook)
             console.log(Meteor.user());
-
+            
             // only if user isnt already in the event
             Tasks.update(this._id, {
                 $push: {attendees: {name: Meteor.user().profile.name, 
@@ -33,7 +33,8 @@ Template.viewEvent.events({
                 Tasks.update({_id : this._id},
                              {$set : {
                                     host: atten[1].name,
-                                    hostUid: atten[1].uid
+                                    hostUid: atten[1].uid,
+                                    hostPic: atten[1].picture
                                 }})
                 // removing the old host
                 Tasks.update({_id : this._id}, 
