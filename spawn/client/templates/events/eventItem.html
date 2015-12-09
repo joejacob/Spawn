@@ -6,7 +6,7 @@ Add max participants
 -->
 <template name="eventItem">
         <a href="{{pathFor 'viewEvent'}}" class="tile-thumbnail thumbnail">
-            <span><h2 style="margin-bottom:10px">{{name}}</h2></span>
+            <span><h2 style="margin-bottom:0px">{{name}}</h2></span>
             <div class="row">
                 <span><h5>Hosted by {{host}} at {{get12Time}}</h5></span>
             </div>
@@ -23,12 +23,12 @@ Add max participants
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-6 ">
-                                <h5>Distance</h5>
+                            <div class="col-xs-6" style="margin-left: 15px;">
+                                <h5 style="margin-bottom: -5px;">Distance</h5>
                                 <button class="btn btn-primary big-button" id="distanceButton">{{getDistance}} miles</button>
                             </div>
-                            <div class="col-xs-6">
-                                <h5>Starts in</h5>
+                            <div class="col-xs-6" style="margin-left: -30px;">
+                                <h5 style="margin-bottom: -5px;">Starts in</h5>
                                 <button class="btn btn-primary big-button">{{getCountdown}}</button>
                             </div>
                         </div>
