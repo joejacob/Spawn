@@ -14,6 +14,9 @@ if (Meteor.isClient) {
             }, function (err) {
                 if (err) {
                     throw new Meteor.Error("Facebook login failed");
+                } else {
+                    console.log("logged");
+                    Router.go('eventsPage');
                 }
             });
         },
@@ -22,6 +25,8 @@ if (Meteor.isClient) {
             Meteor.logout(function (err) {
                 if (err) {
                     throw new Meteor.Error("Logout failed");
+                } else {
+                    Router.go('landingPage');
                 }
             })
         }
