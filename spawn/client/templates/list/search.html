@@ -1,15 +1,4 @@
 <template name="search">
-    <div class="container">
-        <div class="row row-centered" id="results">
-            {{#each results}}
-
-            <div class="col-sm-4 col-centered">
-                {{> eventItem}}
-            </div>
-
-            {{/each}}
-        </div>
-    </div>
     <!-- <div class="container"> -->
     <div class="row">
         <div class="col-xs-5">
@@ -58,7 +47,13 @@
         </div>
 
     </div>
-    
+    <div class="row row-centered" id="results">
+            {{#each results}}
+            <div class="col-sm-4 col-centered">
+                {{> eventItem}}
+            </div>
+            {{/each}}
+        </div>
 
     {{#if noResults}}
     <div class="no-results col-xs-12">No results found!</div>

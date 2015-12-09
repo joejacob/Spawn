@@ -1,5 +1,15 @@
 <template name="eventsPage">
     <h1 id="currentEvents">Happening Soon</h1>
+    <div class="container">
+        <div class="row row-centered" id="myevents">
+            {{#each myevents}}
+            <div class="col-sm-4 col-centered">
+                {{> eventItem}}
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <h1 id="currentEvents">Near You</h1>
     <!--{{> searchBar}}
     {{> searchResult}}-->
 
