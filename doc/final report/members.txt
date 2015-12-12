@@ -14,8 +14,9 @@ Joe Jacob
 	- miscellaneous feature additions
 
 Ethan Gottlieb
-	- google maps api
+	- google maps api, geolocation
 	- facebook friends
+	- user profiles
 	- bug fixes
 	- app design and documentation
 

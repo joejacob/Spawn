@@ -22,7 +22,6 @@ Template.viewEvent.events({
         else {
             toastr.error("This event's full!")
         }
-        
 	},
     
     "click #leaveEvent": function () {
@@ -66,9 +65,7 @@ Template.viewEvent.events({
 });
 
 Template.viewEvent.helpers({
-	// tasks: function () {
-	// 	return Tasks.find({}, {sort: {createdAt: -1}});
-	// }
+
 	comments: function () {
 		return EventComments.find({event_id: this._id }, 
                                   {sort: {createdAt: -1}});

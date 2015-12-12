@@ -1,3 +1,5 @@
+// TODO(ethang): Refactor
+
 UI.registerHelper('getCountdown', function () {
     var currDate = new Date();
 
@@ -22,7 +24,6 @@ UI.registerHelper('getCountdown', function () {
             // starting reactive timer
             var timer = new ReactiveCountdown(timeU, {interval: 1000});
             timer.start();    
-
 
             // formatting time
             var timeVal = timer.get();  
@@ -61,7 +62,6 @@ UI.registerHelper('getCountdownString', function () {
             // starting reactive timer
             var timer = new ReactiveCountdown(timeU, {interval: 1000});
             timer.start();    
-
 
             // formatting time
             var timeVal = timer.get();  

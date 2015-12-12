@@ -27,10 +27,6 @@ Template.displayEventMap.onCreated(function () {
             else {
                 locationMarker.setPosition(latLng);
             }
-
-            // Center and zoom the map view onto the current position.
-            //map.instance.setCenter(locationMarker.getPosition());
-            //map.instance.setZoom(MAP_ZOOM);
         });
 
         var eventMarker = new google.maps.Marker({
@@ -57,7 +53,7 @@ Template.displayEventMap.helpers({
             // Initialize the map once we have the latLng.
         if (GoogleMaps.loaded() && latLng) {
             return {
-                center: actualEventLocation, // new google.maps.LatLng(latLng.lat, latLng.lng),
+                center: actualEventLocation,
                 zoom: MAP_ZOOM
             };
         }
