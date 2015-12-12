@@ -33,7 +33,7 @@ Template.viewEvent.events({
                              {$set : {
                                     host: atten[1].name,
                                     hostUid: atten[1].uid,
-                                    hostPic: atten[1].picture
+                                    hostPic: atten[1].pic
                                 }})
                 // removing the old host
                 Tasks.update({_id : this._id}, 
