@@ -30,10 +30,3 @@ Template.profilePage.helpers({
         }
     }
 });
-
-
-// Template.profilePage.rendered = function () {
-//     Meteor.call('refreshFriends', this.data._id);
-//     console.log(this.data);
-//     console.log('refreshing friends');
-// };

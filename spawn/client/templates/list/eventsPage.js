@@ -16,11 +16,8 @@ Template.eventsPage.helpers({
             return 0;   
         }
         else{
-    
-            return 4/(Tasks.find({'attendees.uid': Meteor.user()._id}).fetch().length % 3);
-            
-        }
-        
+            return 4/(Tasks.find({'attendees.uid': Meteor.user()._id}).fetch().length % 3);   
+        }  
     },
     
     myevents: function() {

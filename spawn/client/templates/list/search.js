@@ -1,5 +1,3 @@
-
-
 // reactive data for search results and checkboxes
 searchResults = {
     keys: {

@@ -14,8 +14,9 @@ Joe Jacob
 	- miscellaneous feature additions
 
 Ethan Gottlieb
-	- google maps api
+	- google maps api, geolocation
 	- facebook friends
+	- user profiles
 	- bug fixes
 	- app design and documentation
 
@@ -24,3 +25,4 @@ Greg McKeon
 	- maps directions
 	- upcoming events
 	- UI
+	- AWS deployment

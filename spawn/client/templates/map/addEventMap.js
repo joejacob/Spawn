@@ -79,15 +79,13 @@ Template.addEventMap.helpers({
 });
 
 function geocodeLatLng(location, map) {
-  var geocoder = new google.maps.Geocoder;
+    var geocoder = new google.maps.Geocoder;
 
-  geocoder.geocode({'location': location}, function(results, status) {
+    geocoder.geocode({'location': location}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
-      if (results[1]) {
-        Session.set('locationName', results[1].formatted_address);
-      }
-    } else {
-      //window.alert('Geocoder failed due to: ' + status);
+        if (results[1]) {
+            Session.set('locationName', results[1].formatted_address);
+        }
     }
-  });
+});
 }
