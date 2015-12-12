@@ -19,7 +19,7 @@ Template.addEvent.events({
                            uid: Meteor.user()._id}];
     var eventLocation = Session.get('selectedLocation');
     var eventlocationName = Session.get('locationName');
-    var maxPart = event.target.maxPart.value;
+    var maxPart = parseInt(event.target.maxPart.value);
       
     var currDate = new Date();
         
