@@ -1,3 +1,5 @@
+All members have contributed to coding and design of Spawn throughout the project. Contributions before the second milestone are included in other folders in doc. Highlights of contributions since the second milestone are included below:
+
 Sam Ginsburg
 	- facebook pictures/friends
 	- countdown timer
