@@ -1,0 +1,20 @@
+{	
+	"layouts": {
+		"appBody": {
+			"contact": "contact",
+			"github": "github",
+			"linkedin": "linkedin",
+			"resume": "resume",
+			"subject": "We%20would%20like%20to%20offer%20you%20a%20job",
+			"home": "home"
+		}
+	},
+	"pages": {
+		"appNotFound": {
+			"pageNotFound": "page not found"
+		},
+		"rootRedirector": {
+			"hello": "sup"
+		}
+	}
+}

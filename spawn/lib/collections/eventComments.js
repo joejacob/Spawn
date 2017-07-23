@@ -1,1 +1,0 @@
-EventComments = new Mongo.Collection("eventComments");

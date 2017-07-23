@@ -1,1 +1,0 @@
-PastEvents = new Mongo.Collection("pastEvents");
