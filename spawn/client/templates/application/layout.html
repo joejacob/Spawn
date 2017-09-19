@@ -1,0 +1,27 @@
+<template name="layout">
+	<body style="margin-top: 46px;">
+		<nav class="navbar navbar-default navbar-fixed-top" > 
+			<div class="container-fluid">
+				<ul id="spawnLogo" class="nav navbar-nav navbar-left">
+					<li><a class="navbar-brand" href="/">Spawn</a></li>
+				</ul>
+				<ul id="spawnPlus" class="nav navbar-nav navbar-left">
+					<li>
+						<a class="navbar-link" id="newEventLink" href="/add">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<span id="loginSection" class="navbar-text">{{> login}}</span>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div id="main" class="container-fluid" style="margin-left: 25px; margin-right: 25px;">
+			{{> yield}}
+		</div>
+	</body>
+</template>

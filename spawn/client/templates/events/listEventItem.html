@@ -1,0 +1,29 @@
+<template name="listEventItem">
+
+    <a href="{{pathFor 'viewEvent'}}" class="list-group-item">
+
+        <div class="row">
+            <div class="col-sm-2 result-padded-col">
+                <h4 class="list-group-item-heading">{{name}} at {{get12Time}}</h4>
+                <p class="list-group-item-text">Hosted by {{host}}</p>
+            </div>
+            {{#each get6attendees}}
+            <div class="col-sm-1" id="attendeeDiv">
+                <img class="img-circle list-img" src={{pic}}>
+                <span>{{getFirstName}}</span>
+            </div>
+            {{/each}}
+
+            <div class="col-sm-offset-{{offset}} col-sm-2 result-padded-col">
+                <span><button class="btn btn-primary big-button-list" style="horizontal-align:center" id="distanceButton">{{getDistance}} miles away</button></span>
+                <span><button class="btn btn-primary big-button-list" style="horizontal-align:center" id="distanceButton"> {{attendees.length}} / {{numParticipants}} going</button></span>
+            </div>
+            <div class="col-sm-2 result-padded-col">
+                <button class="btn btn-primary big-button-list">Starts in {{getCountdown}}</button>
+                {{#if isParticipating}}
+                <span><button type="button" id="leaveEvent" class="btn btn-danger big-button-list">Leave Event</button></span> {{else}}
+                <span><button type="button" id="joinEvent" class="btn btn-success big-button-list">Join Event!</button></span> {{/if}}
+            </div>
+        </div>
+    </a>
+</template>

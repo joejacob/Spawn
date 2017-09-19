@@ -1,0 +1,1 @@
+localTasks = new Mongo.Collection();

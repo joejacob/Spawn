@@ -1,0 +1,31 @@
+<template name="profilePage">
+        <div class = "container-fluid">
+            <h1>
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2">
+                    <a href='http://www.facebook.com/{{this.services.facebook.id}}' class="thumbnail">
+                        <img class="img-rounded" id="eventPicture" style="display:inline" src={{this.profile.picture}}>
+                    </a>
+                </div>
+                <div class="col-sm-7">
+                    <h1 id="profilePageName">{{this.profile.name}}</h1>
+                </div>
+            </div>
+            </h1>
+
+            <h3>Friends</h3>
+            <div id="fbPhotoCircles" class="row well">
+                {{#each friends}}
+                    {{> userThumbnail}}
+                {{/each}}
+            </div>
+
+            <h3>Events History</h3>
+            <div class="list-group">
+                {{#each pastEvents}}
+                    {{> listEventItem}}
+                {{/each}}
+            </div>
+        </div>
+</template>

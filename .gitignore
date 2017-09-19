@@ -1,4 +1,7 @@
 .meteor/local
 .meteor/meteorite
+.deploy/
+settings.json
+
 
 .DS_Store

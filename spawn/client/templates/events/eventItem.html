@@ -1,0 +1,43 @@
+<!--
+TODO:
+Maybe show first 100 words or so of description
+Add max participants
+-->
+<template name="eventItem">
+        <a href="{{pathFor 'viewEvent'}}" class="tile-thumbnail thumbnail">
+            <span><h2 style="margin-bottom:0px">{{name}}</h2></span>
+            <div class="row">
+                <span><h5>Hosted by {{host}} at {{get12Time}}</h5></span>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4 tile-bar">
+                    <img class="img-circle tile-image" src={{hostPic}}>
+                </div>
+                <div class="col-xs-8 tile-bar">
+                    <div class="row">
+                        <div class="progress" style="margin-bottom:0px">
+                            <div class="progress-bar people-going" id="progressbar" role="progressbar" aria-valuenow="{{attendees.length}}" aria-valuemin="0" aria-valuemax="{{numParticipants}}" style="width: {{getProgress}}%">
+                                {{attendees.length}} / {{numParticipants}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6" style="margin-left: 15px;">
+                                <h5 style="margin-bottom: -5px;">Distance</h5>
+                                <button class="btn btn-primary big-button" id="distanceButton">{{getDistance}} miles</button>
+                            </div>
+                            <div class="col-xs-6" style="margin-left: -30px;">
+                                <h5 style="margin-bottom: -5px;">Starts in</h5>
+                                <button class="btn btn-primary big-button">{{getCountdown}}</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="btn btn-danger big-button" id="leaveEvent" type="button">Leave</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+</template>
